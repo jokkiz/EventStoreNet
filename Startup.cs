@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using EventStore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventStore
 {
@@ -29,6 +31,7 @@ namespace EventStore
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
@@ -61,6 +64,8 @@ namespace EventStore
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.SeedDatabase(app.ApplicationServices.GetRequiredService<DataContext>());
         }
     }
 }

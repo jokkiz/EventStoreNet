@@ -150,7 +150,7 @@ module.exports = module.exports.toString();
 /***/ 85:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\n  {{title}}\n</h1>\n"
+module.exports = "<h1>\n  Title: {{title}}\n</h1>\n"
 
 /***/ })
 

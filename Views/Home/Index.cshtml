@@ -12,6 +12,9 @@
 <div class="navbar bg-inverse">
     <a class="navbar-brand text-white">@(ViewBag.Message ?? "EVENT STORE")</a>
 </div>
-<div class="p-1">
+<div id="data" class="p-1 bg-warning">
+    @Json.Serialize(Model)
+</div>
+<div class="p-1 bg-info">
     <app-root></app-root>
 </div>
