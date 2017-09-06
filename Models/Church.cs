@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace EventStore.Models
 {
+    /// <summary>
+    /// Церковь
+    /// </summary>
     public class Church
     {
         public long ChurchId { get; set; }
@@ -16,8 +19,17 @@ namespace EventStore.Models
         /// Город
         /// </summary>
         public string City { get; set; }
+        /// <summary>
+        /// Адрес
+        /// </summary>
         public string Street { get; set; }
+        /// <summary>
+        /// Геоданные
+        /// </summary>
         public string GeoData { get; set; }
+        /// <summary>
+        /// Церковные события
+        /// </summary>
         public IEnumerable<Event> Events { get; set; }
     }
 }
