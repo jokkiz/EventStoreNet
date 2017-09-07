@@ -22,6 +22,13 @@ var AppComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppComponent.prototype, "events", {
+        get: function () {
+            return this.repo.events;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppComponent;
 }());
 AppComponent = __decorate([

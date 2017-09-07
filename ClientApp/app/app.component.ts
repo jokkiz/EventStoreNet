@@ -13,4 +13,8 @@ export class AppComponent {
     get event() {
         return this.repo.event;
     }
+
+    get events(): Event[] {
+        return this.repo.events;
+    }
 }

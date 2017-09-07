@@ -1,6 +1,16 @@
 ﻿<table class="table table-sm table-striped">
-    <tr><th>Наименование</th><td>{{ event?.name }}</td></tr>
-    <tr><th>Категория</th><td>{{ event?.category}}</td></tr>
-    <tr><th>Описание</th><td>{{ event?.description}}</td></tr>
-    <tr><th>Цена</th><td>{{ event?.price}}</td></tr>
+    <tr>
+        <th>Наименование</th>
+        <th>Категория</th>
+        <th>Цена</th>
+        <th>Церковь</th>
+        <th>Рейтинг</th>
+    </tr>
+    <tr *ngFor="let event of events">
+        <td>{{ event.name || 'Загрузка данных...'}}</td>
+        <td>{{ event.category || 'Загрузка данных...'}}</td>
+        <td>{{ event.price || 'Загрузка данных...'}}</td>
+        <td>{{ event.church?.name || 'Нет данных'}}</td>
+        <td>{{ event?.ratings?.length || 0}}</td>
+    </tr>    
 </table>
