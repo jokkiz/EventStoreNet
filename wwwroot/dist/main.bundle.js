@@ -1,6 +1,6 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
-/***/ 181:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
@@ -28,8 +28,9 @@ webpackEmptyContext.id = 54;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(87);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -43,10 +44,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var eventsUrl = "/api/events";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
+        this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
+        // this.filter.category = "Open Air";
+        this.filter.related = true;
+        this.filter.year = 2017;
         this.getEvents(true);
     }
     Repository.prototype.getEvent = function (id) {
@@ -62,9 +68,26 @@ var Repository = (function () {
     Repository.prototype.getEvents = function (related) {
         var _this = this;
         if (related === void 0) { related = false; }
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, eventsUrl + "?related=" + related)
+        var urls = eventsUrl + "?related=" + this.filter.related;
+        if (this.filter.category) {
+            urls += "&category=" + this.filter.category;
+        }
+        if (this.filter.search) {
+            urls += "&search=" + this.filter.search;
+        }
+        if (this.filter.year) {
+            urls += "&year=" + this.filter.year;
+        }
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, urls)
             .subscribe(function (response) { return _this.events = response; });
     };
+    Object.defineProperty(Repository.prototype, "filter", {
+        get: function () {
+            return this.filterObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Repository;
 }());
 Repository = __decorate([
@@ -82,7 +105,7 @@ var _a;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(86);
 
 
@@ -149,8 +172,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(89),
-        styles: [__webpack_require__(88)]
+        template: __webpack_require__(90),
+        styles: [__webpack_require__(89)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -166,10 +189,10 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(88);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -211,6 +234,26 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Filter; });
+var Filter = (function () {
+    function Filter() {
+        this.related = false;
+    }
+    Filter.prototype.reset = function () {
+        this.category = this.search = this.year = null;
+        this.related = false;
+    };
+    return Filter;
+}());
+
+//# sourceMappingURL=configClasses.repository.js.map
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(55);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
@@ -237,7 +280,7 @@ ModelModule = __decorate([
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(49)(false);
@@ -255,12 +298,12 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, exports) {
 
 module.exports = "<table class=\"table table-sm table-striped\">\n    <tr>\n        <th>Наименование</th>\n        <th>Категория</th>\n        <th>Цена</th>\n        <th>Церковь</th>\n        <th>Рейтинг</th>\n    </tr>\n    <tr *ngFor=\"let event of events\">\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\n        <td>{{ event?.ratings?.length || 0}}</td>\n    </tr>    \n</table>"
 
 /***/ })
 
-},[181]);
+},[182]);
 //# sourceMappingURL=main.bundle.js.map

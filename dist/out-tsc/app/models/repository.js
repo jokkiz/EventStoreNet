@@ -12,29 +12,50 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var configClasses_repository_1 = require("./configClasses.repository");
 var eventsUrl = "/api/events";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
+        this.filterObject = new configClasses_repository_1.Filter();
+        this.filter.category = "Open Air";
+        this.filter.related = true;
+        this.filter.year = 2017;
         this.getEvents(true);
     }
     Repository.prototype.getEvent = function (id) {
         var _this = this;
-        this.http.get("api/events/" + id)
-            .subscribe(function (responce) {
-            _this.event = responce.json();
-        });
+        this.sendRequest(http_1.RequestMethod.Get, eventsUrl + "/" + id)
+            .subscribe(function (response) { _this.event = response.json(); });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
-        })).map(function (responce) { return responce.json(); });
+        })).map(function (response) { return response.json(); });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
         if (related === void 0) { related = false; }
-        this.sendRequest(http_1.RequestMethod.Get, eventsUrl + "?related=" + related).subscribe(function (responce) { return _this.events = responce; });
+        var urls = eventsUrl + "?related=" + this.filter.related;
+        if (this.filter.category) {
+            urls += "&category=" + this.filter.category;
+        }
+        if (this.filter.search) {
+            urls += "&search=" + this.filter.search;
+        }
+        if (this.filter.year) {
+            urls += "&year=" + this.filter.year;
+        }
+        this.sendRequest(http_1.RequestMethod.Get, urls)
+            .subscribe(function (response) { return _this.events = response; });
     };
+    Object.defineProperty(Repository.prototype, "filter", {
+        get: function () {
+            return this.filterObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Repository;
 }());
 Repository = __decorate([

@@ -9,5 +9,7 @@ export class Event {
         public description?: string,
         public price?: number,
         public church?: Church,
+        public DateBegin?: Date,
+        public DateEnd?: Date,
         public ratings?: Rating[]) { }
 }

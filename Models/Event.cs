@@ -31,6 +31,14 @@ namespace EventStore.Models
         /// Рейтинг мероприятия
         /// </summary>
         public List<Rating> Ratings { get; set; }
+        /// <summary>
+        /// Дата и время начала события
+        /// </summary>
+        public DateTime DateBegin { get; set; }
+        /// <summary>
+        /// Дата и время окончания события
+        /// </summary>
+        public DateTime DateEnd { get; set; }
         // TODO: добавить свойства автора, лист покупателя
         /// <summary>
         /// Церковь, которая проводит мероприятие

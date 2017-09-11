@@ -54,9 +54,28 @@ namespace EventStore.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Event> GetEvents(bool related = false)
+        public IEnumerable<Event> GetEvents(string category, string search, int? year, bool related = false)
         {
             IQueryable<Event> query = context.Events;
+
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                string categoryLow = category.ToLower();
+                query = query.Where(e => e.Category.ToLower().Contains(categoryLow));
+            }
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                string searchLow = search.ToLower();
+                query = query.Where(e => e.Name.ToLower().Contains(searchLow) || e.Description.ToLower().Contains(searchLow));
+            }
+
+            if (year != null || year.Value > 0)
+            {
+                int yearInt = year.Value;
+                query = query.Where(e => e.DateEnd.Year == yearInt || e.DateBegin.Year == yearInt);
+            }
+
             if (related)
             {
                 query = query.Include(e => e.Church).Include(e => e.Ratings);
