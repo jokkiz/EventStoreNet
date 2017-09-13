@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { Repository } from './models/repository';
 import { Event } from "./models/event.model";
+import { Church } from "./models/church.model";
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,34 @@ export class AppComponent {
 
     get events(): Event[] {
         return this.repo.events;
+    }
+
+    createEvent() {
+        this.repo.createEvent(
+            new Event(0,
+                "Open Air 2018",
+                "Open Air",
+                "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2018 году",
+                2000.00,
+                this.repo.churchies[0].churchId,
+                new Date(2018, 7, 5, 14, 0, 0),
+                new Date(2018, 7, 8, 14, 0, 0)
+            )
+        );
+    }
+
+    createEventAndChurch() {        
+        let c = new Church(0, "ц. Преображение", "Санкт-Петербург", "пр. Нарвский, 13Б", "Санкт-Петербург, пр. Нарвский, 13Б");
+
+        let e = new Event(0,
+            "Open Air 2019",
+            "Open Air",
+            "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2019 году",
+            2000.00,
+            c,
+            new Date(2019, 7, 5, 14, 0, 0),
+            new Date(2019, 7, 8, 14, 0, 0)
+        );
+        this.repo.createEventAndChurch(e, c);
     }
 }

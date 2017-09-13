@@ -4,8 +4,10 @@ import { Http, RequestMethod, Request, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter } from "./configClasses.repository";
+import { Church } from "./church.model";
 
 const eventsUrl = "/api/events";
+const churchUrl = "/api/churchies";
 
 @Injectable()
 export class Repository {
@@ -14,7 +16,7 @@ export class Repository {
     constructor(private http: Http) {
        // this.filter.category = "Open Air";
         this.filter.related = true;
-        this.filter.year = 2017;
+       // this.filter.year = 2017;
         this.getEvents(true);
     }
 
@@ -48,9 +50,39 @@ export class Repository {
             .subscribe(response => this.events = response);
     }
 
+    getChurchies() {
+        this.sendRequest(RequestMethod.Get, churchUrl).subscribe(response => this.churchies = response);
+    }
+
+    createEvent(evnt: Event) {
+        let data = {
+            name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
+            datebegin: evnt.datebegin, dateend: evnt.dateend,
+            church: evnt.church ? evnt.church.churchId : 0
+        }
+        this.sendRequest(RequestMethod.Post, eventsUrl, data).subscribe(response => {
+            evnt.eventId = response;
+            this.events.push(evnt);
+        });
+    }
+
+    createEventAndChurch(evnt: Event, chrch: Church) {
+        let data = {
+            name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
+        };
+        this.sendRequest(RequestMethod.Post, churchUrl, data).subscribe(response => {
+            chrch.churchId = response;
+            evnt.church = chrch;
+            this.churchies.push(chrch);
+            if (evnt != null) {
+                this.createEvent(evnt);
+            }            
+        })
+    }
     get filter(): Filter {
         return this.filterObject;
     }
     event: Event;
     events: Event[];
+    churchies: Church[] = [];
 }

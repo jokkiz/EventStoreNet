@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using EventStore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using EventStore.Models.BindingTargets;
 
 namespace EventStore.Controllers
 {
@@ -70,7 +71,7 @@ namespace EventStore.Controllers
                 query = query.Where(e => e.Name.ToLower().Contains(searchLow) || e.Description.ToLower().Contains(searchLow));
             }
 
-            if (year != null || year.Value > 0)
+            if (year != null && year.Value > 0)
             {
                 int yearInt = year.Value;
                 query = query.Where(e => e.DateEnd.Year == yearInt || e.DateBegin.Year == yearInt);
@@ -101,5 +102,25 @@ namespace EventStore.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult CreateEvent([FromBody] EventData eventData)
+        {
+            if (ModelState.IsValid)
+            {
+                Event newEvent = eventData.Event;
+                if (newEvent.Church != null && newEvent.Church.ChurchId != 0)
+                {
+                    context.Attach(newEvent.Church);
+                }
+                context.Add(newEvent);
+                context.SaveChanges();
+                return Ok(newEvent.EventId);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+
+        }
     }
 }

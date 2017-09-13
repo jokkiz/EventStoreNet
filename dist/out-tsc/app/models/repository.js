@@ -14,13 +14,15 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
 var eventsUrl = "/api/events";
+var churchUrl = "/api/churchies";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
-        this.filter.category = "Open Air";
+        this.churchies = [];
+        // this.filter.category = "Open Air";
         this.filter.related = true;
-        this.filter.year = 2017;
+        // this.filter.year = 2017;
         this.getEvents(true);
     }
     Repository.prototype.getEvent = function (id) {
@@ -48,6 +50,36 @@ var Repository = (function () {
         }
         this.sendRequest(http_1.RequestMethod.Get, urls)
             .subscribe(function (response) { return _this.events = response; });
+    };
+    Repository.prototype.getChurchies = function () {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Get, churchUrl).subscribe(function (response) { return _this.churchies = response; });
+    };
+    Repository.prototype.createEvent = function (evnt) {
+        var _this = this;
+        var data = {
+            name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
+            datebegin: evnt.datebegin, dateend: evnt.dateend,
+            church: evnt.church ? evnt.church.churchId : 0
+        };
+        this.sendRequest(http_1.RequestMethod.Post, eventsUrl, data).subscribe(function (response) {
+            evnt.eventId = response;
+            _this.events.push(evnt);
+        });
+    };
+    Repository.prototype.createEventAndChurch = function (evnt, chrch) {
+        var _this = this;
+        var data = {
+            name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
+        };
+        this.sendRequest(http_1.RequestMethod.Post, churchUrl, data).subscribe(function (response) {
+            chrch.churchId = response;
+            evnt.church = chrch;
+            _this.churchies.push(chrch);
+            if (evnt != null) {
+                _this.createEvent(evnt);
+            }
+        });
     };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {
