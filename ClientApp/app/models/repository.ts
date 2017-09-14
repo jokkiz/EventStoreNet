@@ -28,7 +28,9 @@ export class Repository {
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any> {
         return this.http.request(new Request({
             method: verb, url: url, body: data
-        })).map(response => response.json());
+        })).map(response => {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
     } 
 
     getEvents(related = false) {
@@ -82,6 +84,26 @@ export class Repository {
     get filter(): Filter {
         return this.filterObject;
     }
+
+    /// Изменение события
+    replaceEvent(evnt: Event) {
+        let data = {
+            name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
+            datebegin: evnt.datebegin, dateend: evnt.dateend,
+            church: evnt.church ? evnt.church.churchId : 0
+        };
+        this.sendRequest(RequestMethod.Post, eventsUrl + "/" + evnt.eventId, data)
+            .subscribe(response => this.getEvents());
+    }
+
+    replaceChurch(chrch: Church) {
+        let data = {
+            name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
+        };
+        this.sendRequest(RequestMethod.Put, churchUrl + "/" + chrch.churchId, data)
+            .subscribe(response => this.getEvents());
+    }
+
     event: Event;
     events: Event[];
     churchies: Church[] = [];

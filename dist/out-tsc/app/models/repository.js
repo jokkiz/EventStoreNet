@@ -33,7 +33,9 @@ var Repository = (function () {
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
-        })).map(function (response) { return response.json(); });
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
@@ -88,6 +90,25 @@ var Repository = (function () {
         enumerable: true,
         configurable: true
     });
+    /// Изменение события
+    Repository.prototype.replaceEvent = function (evnt) {
+        var _this = this;
+        var data = {
+            name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
+            datebegin: evnt.datebegin, dateend: evnt.dateend,
+            church: evnt.church ? evnt.church.churchId : 0
+        };
+        this.sendRequest(http_1.RequestMethod.Post, eventsUrl + "/" + evnt.eventId, data)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.replaceChurch = function (chrch) {
+        var _this = this;
+        var data = {
+            name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
+        };
+        this.sendRequest(http_1.RequestMethod.Put, churchUrl + "/" + chrch.churchId, data)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
     return Repository;
 }());
 Repository = __decorate([

@@ -26,7 +26,7 @@ export class AppComponent {
                 "Open Air",
                 "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2018 году",
                 2000.00,
-                this.repo.churchies[0].churchId,
+                this.repo.churchies[0].churchId != null ? this.repo.churchies[0].churchId : null,
                 new Date(2018, 7, 5, 14, 0, 0),
                 new Date(2018, 7, 8, 14, 0, 0)
             )
@@ -46,5 +46,17 @@ export class AppComponent {
             new Date(2019, 7, 8, 14, 0, 0)
         );
         this.repo.createEventAndChurch(e, c);
+    }
+
+    replaceEvent() {
+        let e = this.repo.events[0];
+        e.name = "Изменил название мероприятия";
+        e.category = "Другая категория";
+        this.repo.replaceEvent(e);
+    }
+
+    replaceChurch() {
+        let c = new Church(3, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
+        this.repo.replaceChurch(c);
     }
 }

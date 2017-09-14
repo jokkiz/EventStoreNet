@@ -65,7 +65,9 @@ var Repository = (function () {
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
             method: verb, url: url, body: data
-        })).map(function (response) { return response.json(); });
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
@@ -120,6 +122,25 @@ var Repository = (function () {
         enumerable: true,
         configurable: true
     });
+    /// Изменение события
+    Repository.prototype.replaceEvent = function (evnt) {
+        var _this = this;
+        var data = {
+            name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
+            datebegin: evnt.datebegin, dateend: evnt.dateend,
+            church: evnt.church ? evnt.church.churchId : 0
+        };
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Post, eventsUrl + "/" + evnt.eventId, data)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.replaceChurch = function (chrch) {
+        var _this = this;
+        var data = {
+            name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
+        };
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Put, churchUrl + "/" + chrch.churchId, data)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
     return Repository;
 }());
 Repository = __decorate([
@@ -204,12 +225,22 @@ var AppComponent = (function () {
         configurable: true
     });
     AppComponent.prototype.createEvent = function () {
-        this.repo.createEvent(new __WEBPACK_IMPORTED_MODULE_2__models_event_model__["a" /* Event */](0, "Open Air 2018", "Open Air", "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2018 году", 2000.00, this.repo.churchies[0].churchId, new Date(2018, 7, 5, 14, 0, 0), new Date(2018, 7, 8, 14, 0, 0)));
+        this.repo.createEvent(new __WEBPACK_IMPORTED_MODULE_2__models_event_model__["a" /* Event */](0, "Open Air 2018", "Open Air", "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2018 году", 2000.00, this.repo.churchies[0].churchId != null ? this.repo.churchies[0].churchId : null, new Date(2018, 7, 5, 14, 0, 0), new Date(2018, 7, 8, 14, 0, 0)));
     };
     AppComponent.prototype.createEventAndChurch = function () {
         var c = new __WEBPACK_IMPORTED_MODULE_3__models_church_model__["a" /* Church */](0, "ц. Преображение", "Санкт-Петербург", "пр. Нарвский, 13Б", "Санкт-Петербург, пр. Нарвский, 13Б");
         var e = new __WEBPACK_IMPORTED_MODULE_2__models_event_model__["a" /* Event */](0, "Open Air 2019", "Open Air", "Самое долгожданное событие Санкт-Петербурга и Ленинградской области в 2019 году", 2000.00, c, new Date(2019, 7, 5, 14, 0, 0), new Date(2019, 7, 8, 14, 0, 0));
         this.repo.createEventAndChurch(e, c);
+    };
+    AppComponent.prototype.replaceEvent = function () {
+        var e = this.repo.events[0];
+        e.name = "Изменил название мероприятия";
+        e.category = "Другая категория";
+        this.repo.replaceEvent(e);
+    };
+    AppComponent.prototype.replaceChurch = function () {
+        var c = new __WEBPACK_IMPORTED_MODULE_3__models_church_model__["a" /* Church */](3, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
+        this.repo.replaceChurch(c);
     };
     return AppComponent;
 }());
@@ -389,7 +420,7 @@ module.exports = module.exports.toString();
 /***/ 92:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\n    <tr>\n        <th>Наименование</th>\n        <th>Категория</th>\n        <th>Цена</th>\n        <th>Церковь</th>\n        <th>Рейтинг</th>\n    </tr>\n    <tr *ngFor=\"let event of events\">\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\n        <td>{{ event?.ratings?.length || 0}}</td>\n    </tr>    \n</table>\n<button class=\"btn btn-primary m-1\" (click)=\"createEvent()\">Создать мероприятие</button>\n<button class=\"btn btn-primary m-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>"
+module.exports = "<table class=\"table table-sm table-striped\">\n    <tr>\n        <th>Наименование</th>\n        <th>Категория</th>\n        <th>Цена</th>\n        <th>Церковь</th>\n        <th>Рейтинг</th>\n    </tr>\n    <tr *ngFor=\"let event of events\">\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\n        <td>{{ event?.ratings?.length || 0}}</td>\n    </tr>    \n</table>\n<button class=\"btn btn-primary m-1\" (click)=\"createEvent()\">Создать мероприятие</button>\n<button class=\"btn btn-primary m-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>\n<button class=\"btn btn-secondary m-1\" (click)=\"replaceEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-secondary m-1\" (click)=\"replaceChurch()\">Изменить церковь</button>"
 
 /***/ })
 

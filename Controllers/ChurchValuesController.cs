@@ -17,7 +17,10 @@ namespace EventStore.Controllers
             context = ctx;
         }
 
-        // GET: api/values
+        /// <summary>
+        /// Вывод всего списка зарегистрированных церквей 
+        /// </summary>
+        /// <returns>Перечисление объектов церкви</returns>
         [HttpGet]
         public IEnumerable<Church> GetChurchies()
         {
@@ -31,7 +34,11 @@ namespace EventStore.Controllers
             return "value";
         }
 
-        // POST api/values
+        /// <summary>
+        /// Добавление объекта церковь
+        /// </summary>
+        /// <param name="churchParam">Данные о церкви</param>
+        /// <returns>Код ответа Http</returns>
         [HttpPost]
         public IActionResult CreateChurch([FromBody]ChurchData churchParam)
         {
@@ -48,11 +55,28 @@ namespace EventStore.Controllers
             }
         }
 
-        // PUT api/values/5
+        /// <summary>
+        /// Изменение церкви
+        /// </summary>
+        /// <param name="id">Идентификатор церкви</param>
+        /// <param name="cdata">Новый объект церкви</param>
+        /// <returns>Код ответа Http</returns>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult ReplaceChurch(long id, [FromBody] ChurchData cdata)
         {
-        }
+            if (ModelState.IsValid)
+            {
+                Church c = cdata.Church;
+                c.ChurchId = id;
+                context.Update(c);
+                context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }       
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

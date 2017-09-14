@@ -120,7 +120,27 @@ namespace EventStore.Controllers
             {
                 return BadRequest(ModelState);
             }
+        }
 
+        [HttpPut("{id}")]
+        public IActionResult ReplaceEvent(long id, [FromBody] EventData edata)
+        {
+            if (ModelState.IsValid)
+            {
+                Event e = edata.Event;
+                e.EventId = id;
+                if (e.Church != null && e.Church.ChurchId != 0)
+                {
+                    context.Attach(e.Church);
+                }
+                context.Update(e);
+                context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }            
         }
     }
 }

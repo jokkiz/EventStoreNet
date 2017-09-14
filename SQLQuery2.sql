@@ -1,2 +1,5 @@
-delete from Events where eventid in (11,12)
+delete from Events where eventid > 10
 delete from Churchies where ChurchId > 4
+
+select * from Churchies
+select * from Events
