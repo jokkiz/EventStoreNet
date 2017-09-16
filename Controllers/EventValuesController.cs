@@ -7,6 +7,7 @@ using EventStore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using EventStore.Models.BindingTargets;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace EventStore.Controllers
 {
@@ -141,6 +142,37 @@ namespace EventStore.Controllers
             {
                 return BadRequest(ModelState);
             }            
+        }
+        
+        [HttpPatch("{id}")]
+        public IActionResult UpdateEvent(long id, [FromBody]JsonPatchDocument<EventData> patch)
+        {
+            Event evnt = context.Events
+                .Include(c => c.Church)
+                .FirstOrDefault(e => e.EventId == id);
+            EventData edata = new EventData { Event = evnt };
+            patch.ApplyTo(edata, ModelState);
+
+            if (ModelState.IsValid && TryValidateModel(patch))
+            {
+                if (evnt.Church != null && evnt.Church.ChurchId != 0)
+                {
+                    context.Attach(evnt.Church);
+                }
+                context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }           
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteEvent(long id)
+        {
+            context.Events.Remove(new Event { EventId = id });
+            context.SaveChanges();
         }
     }
 }

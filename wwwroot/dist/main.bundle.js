@@ -141,6 +141,25 @@ var Repository = (function () {
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Put, churchUrl + "/" + chrch.churchId, data)
             .subscribe(function (response) { return _this.getEvents(); });
     };
+    Repository.prototype.updateEvent = function (id, changes) {
+        var _this = this;
+        var patch = [];
+        changes.forEach(function (value, key) { return patch.push({ op: "replace", path: key, value: value }); });
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Patch, eventsUrl + "/" + id, patch)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.deleteEvent = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Delete, eventsUrl + "/" + id).subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.deleteChurch = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Delete, churchUrl + "/" + id)
+            .subscribe(function (response) {
+            _this.getEvents();
+            _this.getChurchies();
+        });
+    };
     return Repository;
 }());
 Repository = __decorate([
@@ -241,6 +260,18 @@ var AppComponent = (function () {
     AppComponent.prototype.replaceChurch = function () {
         var c = new __WEBPACK_IMPORTED_MODULE_3__models_church_model__["a" /* Church */](3, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
         this.repo.replaceChurch(c);
+    };
+    AppComponent.prototype.updateEvent = function () {
+        var changes = new Map();
+        changes.set("name", "Open Air 2019");
+        changes.set("church", null);
+        this.repo.updateEvent(10, changes);
+    };
+    AppComponent.prototype.deleteEvent = function () {
+        this.repo.deleteEvent(10);
+    };
+    AppComponent.prototype.deleteChurch = function () {
+        this.repo.deleteChurch(4);
     };
     return AppComponent;
 }());
@@ -420,7 +451,7 @@ module.exports = module.exports.toString();
 /***/ 92:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\n    <tr>\n        <th>Наименование</th>\n        <th>Категория</th>\n        <th>Цена</th>\n        <th>Церковь</th>\n        <th>Рейтинг</th>\n    </tr>\n    <tr *ngFor=\"let event of events\">\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\n        <td>{{ event?.ratings?.length || 0}}</td>\n    </tr>    \n</table>\n<button class=\"btn btn-primary m-1\" (click)=\"createEvent()\">Создать мероприятие</button>\n<button class=\"btn btn-primary m-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>\n<button class=\"btn btn-secondary m-1\" (click)=\"replaceEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-secondary m-1\" (click)=\"replaceChurch()\">Изменить церковь</button>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Наименование</th>\r\n        <th>Категория</th>\r\n        <th>Цена</th>\r\n        <th>Церковь</th>\r\n        <th>Рейтинг</th>\r\n    </tr>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\r\n        <td>{{ event?.ratings?.length || 0}}</td>\r\n    </tr>    \r\n</table>\r\n<button class=\"btn btn-primary m-a-1 \" (click)=\"createEvent()\">Создать мероприятие</button>\r\n<button class=\"btn btn-primary m-a-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceChurch()\">Изменить церковь</button>\r\n<button class=\"btn btn-success m-a-1\" (click)=\"updateEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteEvent()\">Удалить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteChurch()\">Удалить церковь</button>"
 
 /***/ })
 

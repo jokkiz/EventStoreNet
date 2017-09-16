@@ -46,8 +46,20 @@ var AppComponent = (function () {
         this.repo.replaceEvent(e);
     };
     AppComponent.prototype.replaceChurch = function () {
-        var c = new church_model_1.Church(2, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
+        var c = new church_model_1.Church(3, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
         this.repo.replaceChurch(c);
+    };
+    AppComponent.prototype.updateEvent = function () {
+        var changes = new Map();
+        changes.set("name", "Open Air 2019");
+        changes.set("church", null);
+        this.repo.updateEvent(10, changes);
+    };
+    AppComponent.prototype.deleteEvent = function () {
+        this.repo.deleteEvent(10);
+    };
+    AppComponent.prototype.deleteChurch = function () {
+        this.repo.deleteChurch(4);
     };
     return AppComponent;
 }());

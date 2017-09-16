@@ -18,9 +18,7 @@ namespace EventStore.Controllers
         public IActionResult Index()
         {
             ViewBag.Messages = "Event Store App";
-            return View(context.Events.First());
-        }
-
-        
+            return View();
+        }        
     }
 }

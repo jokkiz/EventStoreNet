@@ -104,6 +104,25 @@ export class Repository {
             .subscribe(response => this.getEvents());
     }
 
+    updateEvent(id: number, changes: Map<string, any>) {
+        let patch = [];
+        changes.forEach((value, key) => patch.push({ op: "replace", path: key, value: value }));
+        this.sendRequest(RequestMethod.Patch, eventsUrl + "/" + id, patch)
+            .subscribe(response => this.getEvents());
+    }
+
+    deleteEvent(id: number) {
+        this.sendRequest(RequestMethod.Delete, eventsUrl + "/" + id).subscribe(response => this.getEvents());
+    }
+
+    deleteChurch(id: number) {
+        this.sendRequest(RequestMethod.Delete, churchUrl + "/" + id)
+            .subscribe(response => {
+                this.getEvents();
+                this.getChurchies();
+        });
+    }
+
     event: Event;
     events: Event[];
     churchies: Church[] = [];

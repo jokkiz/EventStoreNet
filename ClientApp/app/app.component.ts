@@ -59,4 +59,19 @@ export class AppComponent {
         let c = new Church(3, "Новое название церкви", "Выборг", "Новый адрес", "Новое расположение");
         this.repo.replaceChurch(c);
     }
+
+    updateEvent() {
+        let changes = new Map<string, any>();
+        changes.set("name", "Open Air 2019");
+        changes.set("church", null);
+        this.repo.updateEvent(10, changes);
+    }
+
+    deleteEvent() {
+        this.repo.deleteEvent(10);
+    }
+
+    deleteChurch() {
+        this.repo.deleteChurch(4);
+    }
 }

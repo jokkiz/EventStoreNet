@@ -109,6 +109,25 @@ var Repository = (function () {
         this.sendRequest(http_1.RequestMethod.Put, churchUrl + "/" + chrch.churchId, data)
             .subscribe(function (response) { return _this.getEvents(); });
     };
+    Repository.prototype.updateEvent = function (id, changes) {
+        var _this = this;
+        var patch = [];
+        changes.forEach(function (value, key) { return patch.push({ op: "replace", path: key, value: value }); });
+        this.sendRequest(http_1.RequestMethod.Patch, eventsUrl + "/" + id, patch)
+            .subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.deleteEvent = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, eventsUrl + "/" + id).subscribe(function (response) { return _this.getEvents(); });
+    };
+    Repository.prototype.deleteChurch = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, churchUrl + "/" + id)
+            .subscribe(function (response) {
+            _this.getEvents();
+            _this.getChurchies();
+        });
+    };
     return Repository;
 }());
 Repository = __decorate([

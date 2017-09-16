@@ -80,8 +80,10 @@ namespace EventStore.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteChurch(long id)
         {
+            context.Churchies.Remove(new Church { ChurchId = id });
+            context.SaveChanges();
         }
     }
 }
