@@ -548,7 +548,7 @@ module.exports = "<!--<table class=\"table table-sm table-striped\">\r\n    <tr>
 /***/ 95:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\r\n    <th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{event.name}}</td>\r\n        <td>{{event.category}}</td>\r\n        <td>{{event.price}}</td>\r\n        <td>{{event.datebegin}}</td>\r\n    </tr>\r\n</table>"
+module.exports = "<table class=\"table table-striped\">\r\n    <th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{event.name}}</td>\r\n        <td>{{event.category}}</td>\r\n        <td>{{event.price}}</td>\r\n        <td>{{event.dateBegin | date: \"dd.MM.yyyy\"}}</td>\r\n    </tr>\r\n</table>"
 
 /***/ }),
 
