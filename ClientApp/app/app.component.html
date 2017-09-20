@@ -1,4 +1,4 @@
-﻿<table class="table table-sm table-striped">
+﻿<!--<table class="table table-sm table-striped">
     <tr>
         <th>Наименование</th>
         <th>Категория</th>
@@ -13,7 +13,9 @@
         <td>{{ event.church?.name || 'Нет данных'}}</td>
         <td>{{ event?.ratings?.length || 0}}</td>
     </tr>    
-</table>
+</table> -->
+<filter-events></filter-events>
+<event-table></event-table>
 <button class="btn btn-primary m-a-1 " (click)="createEvent()">Создать мероприятие</button>
 <button class="btn btn-primary m-a-1" (click)="createEventAndChurch()">Создать мероприятие и церковь</button>
 <button class="btn btn-secondary m-a-1" (click)="replaceEvent()">Изменить мероприятие</button>

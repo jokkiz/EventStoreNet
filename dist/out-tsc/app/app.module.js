@@ -13,6 +13,7 @@ var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var model_module_1 = require("./models/model.module");
 var eventTable_component_1 = require("./structure/eventTable.component");
+var filter_component_1 = require("./structure/filter.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,7 +22,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         declarations: [
-            app_component_1.AppComponent, eventTable_component_1.EventTableComponent
+            app_component_1.AppComponent, eventTable_component_1.EventTableComponent, filter_component_1.FilterEventsComponent
         ],
         imports: [
             platform_browser_1.BrowserModule,
