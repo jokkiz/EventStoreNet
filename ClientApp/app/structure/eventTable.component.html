@@ -1,0 +1,8 @@
+﻿<table class="table table-striped">
+    <th>Наименование</th><th>Категория</th><th>Цена</th>
+    <tr *ngFor="let event of events">
+        <td>{{event.name}}</td>
+        <td>{{event.category}}</td>
+        <td>{{event.price}}</td>
+    </tr>
+</table>

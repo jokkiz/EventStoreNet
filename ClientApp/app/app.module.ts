@@ -5,10 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ModelModule } from "./models/model.module";
+import { EventTableComponent } from "./structure/eventTable.component"
 
 @NgModule({
   declarations: [
-    AppComponent
+      AppComponent, EventTableComponent
   ],
   imports: [
     BrowserModule,
