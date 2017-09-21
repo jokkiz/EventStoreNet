@@ -6,12 +6,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ModelModule } from "./models/model.module";
 import { EventTableComponent } from "./structure/eventTable.component"
-import { FilterEventsComponent} from "./structure/filter.component";
+import { FilterEventsComponent } from "./structure/filter.component";
+import { EventDetailComponent } from "./structure/eventDetail.component";
 
 @NgModule({
   declarations: [
-      AppComponent, EventTableComponent, FilterEventsComponent
-  ],
+      AppComponent, EventTableComponent, FilterEventsComponent, EventDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -1,0 +1,12 @@
+﻿<table class="table table-striped">
+    <tr><th colspan="2" class="bg-info">Событие</th></tr>
+    <tr><th>Наименование</th><td>{{event?.name || 'Нет данных'}}</td></tr>
+    <tr><th>Категория</th><td>{{event?.category || 'Нет данных'}}</td></tr>
+    <tr><th>Описание</th><td>{{event?.description || 'Нет данных'}}</td></tr>
+    <tr><th>Цена</th><td>{{event?.price || 'Нет данных'}}</td></tr>
+    <tr><th colspan="2" class="bg-info">Церковь</th></tr>
+    <tr><th>Наименование</th><td>{{event?.church?.name || 'Нет данных'}}</td></tr>
+    <tr><th>Город</th><td>{{event?.church?.city || 'Нет данных'}}</td></tr>
+    <tr><th>Адрес</th><td>{{event?.church?.street || 'Нет данных'}}</td></tr>
+    <tr><th>Cобытия</th><td>{{event?.church?.events?.length || 'Нет данных'}}</td></tr>
+</table>

@@ -22,7 +22,7 @@ export class Repository {
 
     getEvent(id: number) {
         this.sendRequest(RequestMethod.Get, eventsUrl + "/" + id)
-            .subscribe(response => { this.event = response.json(); });
+            .subscribe(response => { this.event = response; });
     }
 
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any> {

@@ -11,28 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var EventTableComponent = (function () {
-    function EventTableComponent(repo) {
+var EventDetailComponent = (function () {
+    function EventDetailComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(EventTableComponent.prototype, "events", {
+    Object.defineProperty(EventDetailComponent.prototype, "event", {
         get: function () {
-            return this.repo.events;
+            return this.repo.event;
         },
         enumerable: true,
         configurable: true
     });
-    EventTableComponent.prototype.selectEvent = function (id) {
-        this.repo.getEvent(id);
-    };
-    return EventTableComponent;
+    return EventDetailComponent;
 }());
-EventTableComponent = __decorate([
+EventDetailComponent = __decorate([
     core_1.Component({
-        selector: "event-table",
-        templateUrl: "eventTable.component.html"
+        selector: "<event-detail>",
+        templateUrl: "eventDetail.component.html"
     }),
     __metadata("design:paramtypes", [repository_1.Repository])
-], EventTableComponent);
-exports.EventTableComponent = EventTableComponent;
-//# sourceMappingURL=eventTable.component.js.map
+], EventDetailComponent);
+exports.EventDetailComponent = EventDetailComponent;
+//# sourceMappingURL=eventDetail.component.js.map

@@ -1,9 +1,11 @@
 ﻿<table class="table table-striped">
-    <th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th>
+    <tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th><th></th></tr>
     <tr *ngFor="let event of events">
         <td>{{event.name}}</td>
         <td>{{event.category}}</td>
         <td>{{event.price}}</td>
-        <td>{{event.dateBegin | date: "dd.MM.yyyy"}}</td>
+        <td>{{event.dateBegin | date: "dd.MM.yyyy"}}</td> 
+        <td><button class="btn btn-primary btn-sm" 
+                    (click)="selectEvent(event.eventId)" >Детали</button></td>
     </tr>
 </table>

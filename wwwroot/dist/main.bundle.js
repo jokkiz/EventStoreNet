@@ -1,21 +1,12 @@
 webpackJsonp([1],{
 
-/***/ 188:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(16);
-module.exports = __webpack_require__(82);
-
-
-/***/ }),
-
-/***/ 24:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(88);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
@@ -47,7 +38,7 @@ var Repository = (function () {
     Repository.prototype.getEvent = function (id) {
         var _this = this;
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, eventsUrl + "/" + id)
-            .subscribe(function (response) { _this.event = response.json(); });
+            .subscribe(function (response) { _this.event = response; });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
@@ -159,6 +150,15 @@ var _a;
 
 /***/ }),
 
+/***/ 190:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(16);
+module.exports = __webpack_require__(82);
+
+
+/***/ }),
+
 /***/ 55:
 /***/ (function(module, exports) {
 
@@ -177,7 +177,7 @@ webpackEmptyContext.id = 55;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(86);
 
 
@@ -208,7 +208,7 @@ else {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_event_model__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_church_model__ = __webpack_require__(87);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
@@ -278,8 +278,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(94),
-        styles: [__webpack_require__(93)]
+        template: __webpack_require__(95),
+        styles: [__webpack_require__(94)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -295,12 +295,13 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_eventTable_component__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_filter_component__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_eventTable_component__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_filter_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_eventDetail_component__ = __webpack_require__(91);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -308,6 +309,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -324,7 +326,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__structure_eventTable_component__["a" /* EventTableComponent */], __WEBPACK_IMPORTED_MODULE_7__structure_filter_component__["a" /* FilterEventsComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__structure_eventTable_component__["a" /* EventTableComponent */], __WEBPACK_IMPORTED_MODULE_7__structure_filter_component__["a" /* FilterEventsComponent */], __WEBPACK_IMPORTED_MODULE_8__structure_eventDetail_component__["a" /* EventDetailComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -409,7 +411,7 @@ var Event = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(17);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -439,7 +441,51 @@ ModelModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(17);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventDetailComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EventDetailComponent = (function () {
+    function EventDetailComponent(repo) {
+        this.repo = repo;
+    }
+    Object.defineProperty(EventDetailComponent.prototype, "event", {
+        get: function () {
+            return this.repo.event;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return EventDetailComponent;
+}());
+EventDetailComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+        selector: "<event-detail>",
+        template: __webpack_require__(96)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
+], EventDetailComponent);
+
+var _a;
+//# sourceMappingURL=eventDetail.component.js.map
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(17);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventTableComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -463,12 +509,15 @@ var EventTableComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    EventTableComponent.prototype.selectEvent = function (id) {
+        this.repo.getEvent(id);
+    };
     return EventTableComponent;
 }());
 EventTableComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
         selector: "event-table",
-        template: __webpack_require__(95)
+        template: __webpack_require__(97)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], EventTableComponent);
@@ -478,12 +527,12 @@ var _a;
 
 /***/ }),
 
-/***/ 92:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(17);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterEventsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -510,7 +559,7 @@ var FilterEventsComponent = (function () {
 FilterEventsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
         selector: "filter-events",
-        template: __webpack_require__(96)
+        template: __webpack_require__(98)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], FilterEventsComponent);
@@ -520,7 +569,7 @@ var _a;
 
 /***/ }),
 
-/***/ 93:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(50)(false);
@@ -538,26 +587,33 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 94:
-/***/ (function(module, exports) {
-
-module.exports = "<!--<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Наименование</th>\r\n        <th>Категория</th>\r\n        <th>Цена</th>\r\n        <th>Церковь</th>\r\n        <th>Рейтинг</th>\r\n    </tr>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{ event.name || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.category || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.price || 'Загрузка данных...'}}</td>\r\n        <td>{{ event.church?.name || 'Нет данных'}}</td>\r\n        <td>{{ event?.ratings?.length || 0}}</td>\r\n    </tr>    \r\n</table> -->\r\n<filter-events></filter-events>\r\n<event-table></event-table>\r\n<button class=\"btn btn-primary m-a-1 \" (click)=\"createEvent()\">Создать мероприятие</button>\r\n<button class=\"btn btn-primary m-a-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceChurch()\">Изменить церковь</button>\r\n<button class=\"btn btn-success m-a-1\" (click)=\"updateEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteEvent()\">Удалить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteChurch()\">Удалить церковь</button>"
-
-/***/ }),
-
 /***/ 95:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\r\n    <th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{event.name}}</td>\r\n        <td>{{event.category}}</td>\r\n        <td>{{event.price}}</td>\r\n        <td>{{event.dateBegin | date: \"dd.MM.yyyy\"}}</td>\r\n    </tr>\r\n</table>"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            <filter-events></filter-events>\r\n            <event-table></event-table>\r\n        </div>\r\n        <div class=\"col\">\r\n           <event-detail></event-detail>\r\n        </div>\r\n    </div>\r\n</div>\r\n<button class=\"btn btn-primary m-a-1 \" (click)=\"createEvent()\">Создать мероприятие</button>\r\n<button class=\"btn btn-primary m-a-1\" (click)=\"createEventAndChurch()\">Создать мероприятие и церковь</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-secondary m-a-1\" (click)=\"replaceChurch()\">Изменить церковь</button>\r\n<button class=\"btn btn-success m-a-1\" (click)=\"updateEvent()\">Изменить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteEvent()\">Удалить мероприятие</button>\r\n<button class=\"btn btn-danger m-a-1\" (click)=\"deleteChurch()\">Удалить церковь</button>"
 
 /***/ }),
 
 /***/ 96:
 /***/ (function(module, exports) {
 
+module.exports = "<table class=\"table table-striped\">\r\n    <tr><th colspan=\"2\" class=\"bg-info\">Событие</th></tr>\r\n    <tr><th>Наименование</th><td>{{event?.name || 'Нет данных'}}</td></tr>\r\n    <tr><th>Категория</th><td>{{event?.category || 'Нет данных'}}</td></tr>\r\n    <tr><th>Описание</th><td>{{event?.description || 'Нет данных'}}</td></tr>\r\n    <tr><th>Цена</th><td>{{event?.price || 'Нет данных'}}</td></tr>\r\n    <tr><th colspan=\"2\" class=\"bg-info\">Церковь</th></tr>\r\n    <tr><th>Наименование</th><td>{{event?.church?.name || 'Нет данных'}}</td></tr>\r\n    <tr><th>Город</th><td>{{event?.church?.city || 'Нет данных'}}</td></tr>\r\n    <tr><th>Адрес</th><td>{{event?.church?.street || 'Нет данных'}}</td></tr>\r\n    <tr><th>Cобытия</th><td>{{event?.church?.events?.length || 'Нет данных'}}</td></tr>\r\n</table>"
+
+/***/ }),
+
+/***/ 97:
+/***/ (function(module, exports) {
+
+module.exports = "<table class=\"table table-striped\">\r\n    <tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Дата начала</th><th></th></tr>\r\n    <tr *ngFor=\"let event of events\">\r\n        <td>{{event.name}}</td>\r\n        <td>{{event.category}}</td>\r\n        <td>{{event.price}}</td>\r\n        <td>{{event.dateBegin | date: \"dd.MM.yyyy\"}}</td> \r\n        <td><button class=\"btn btn-primary btn-sm\" \r\n                    (click)=\"selectEvent(event.eventId)\" >Детали</button></td>\r\n    </tr>\r\n</table>"
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, exports) {
+
 module.exports = "<div class=\"m-1\">\r\n    <button class=\"btn btn-primary\" (click)=\"setCategory(openAirCategory)\">Open Air</button>\r\n    <button class=\"btn btn-primary\" (click)=\"setCategory(null)\">Все</button>\r\n</div>"
 
 /***/ })
 
-},[188]);
+},[190]);
 //# sourceMappingURL=main.bundle.js.map

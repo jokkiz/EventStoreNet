@@ -28,7 +28,7 @@ var Repository = (function () {
     Repository.prototype.getEvent = function (id) {
         var _this = this;
         this.sendRequest(http_1.RequestMethod.Get, eventsUrl + "/" + id)
-            .subscribe(function (response) { _this.event = response.json(); });
+            .subscribe(function (response) { _this.event = response; });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
