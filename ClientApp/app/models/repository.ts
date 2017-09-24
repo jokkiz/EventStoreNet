@@ -14,9 +14,7 @@ export class Repository {
     private filterObject = new Filter();
 
     constructor(private http: Http) {
-       // this.filter.category = "Open Air";
         this.filter.related = true;
-       // this.filter.year = 2017;
         this.getEvents(true);
     }
 
@@ -48,8 +46,13 @@ export class Repository {
             urls += "&year=" + this.filter.year;
         }
 
+        urls += "&metadata=true";
+
         this.sendRequest(RequestMethod.Get, urls)
-            .subscribe(response => this.events = response);
+            .subscribe(response => {
+                this.events = response.data;
+                this.categories = response.categories;
+            });
     }
 
     getChurchies() {
@@ -126,4 +129,5 @@ export class Repository {
     event: Event;
     events: Event[];
     churchies: Church[] = [];
+    categories: string[] = [];
 }

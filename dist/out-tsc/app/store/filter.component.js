@@ -11,33 +11,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var router_1 = require("@angular/router");
-var EventDetailComponent = (function () {
-    function EventDetailComponent(repo, router, activeRouter) {
+var FilterComponent = (function () {
+    function FilterComponent(repo) {
         this.repo = repo;
-        var id = Number.parseInt(activeRouter.snapshot.params["id"]);
-        if (id) {
-            this.repo.getEvent(id);
-        }
-        else {
-            router.navigateByUrl("/");
-        }
     }
-    Object.defineProperty(EventDetailComponent.prototype, "event", {
+    Object.defineProperty(FilterComponent.prototype, "categories", {
         get: function () {
-            return this.repo.event;
+            return this.repo.categories;
         },
         enumerable: true,
         configurable: true
     });
-    return EventDetailComponent;
+    Object.defineProperty(FilterComponent.prototype, "currentCategory", {
+        get: function () {
+            return this.repo.filter.category;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    FilterComponent.prototype.setCurrentCategory = function (newCategory) {
+        this.repo.filter.category = newCategory;
+        this.repo.getEvents();
+    };
+    return FilterComponent;
 }());
-EventDetailComponent = __decorate([
+FilterComponent = __decorate([
     core_1.Component({
-        selector: "<event-detail>",
-        templateUrl: "eventDetail.component.html"
+        selector: "store-filter",
+        templateUrl: "filter.component.html"
     }),
-    __metadata("design:paramtypes", [repository_1.Repository, router_1.Router, router_1.ActivatedRoute])
-], EventDetailComponent);
-exports.EventDetailComponent = EventDetailComponent;
-//# sourceMappingURL=eventDetail.component.js.map
+    __metadata("design:paramtypes", [repository_1.Repository])
+], FilterComponent);
+exports.FilterComponent = FilterComponent;
+//# sourceMappingURL=filter.component.js.map

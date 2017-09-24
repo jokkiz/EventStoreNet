@@ -11,33 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var router_1 = require("@angular/router");
-var EventDetailComponent = (function () {
-    function EventDetailComponent(repo, router, activeRouter) {
+var EventListComponent = (function () {
+    function EventListComponent(repo) {
         this.repo = repo;
-        var id = Number.parseInt(activeRouter.snapshot.params["id"]);
-        if (id) {
-            this.repo.getEvent(id);
-        }
-        else {
-            router.navigateByUrl("/");
-        }
     }
-    Object.defineProperty(EventDetailComponent.prototype, "event", {
+    Object.defineProperty(EventListComponent.prototype, "events", {
         get: function () {
-            return this.repo.event;
+            return this.repo.events;
         },
         enumerable: true,
         configurable: true
     });
-    return EventDetailComponent;
+    return EventListComponent;
 }());
-EventDetailComponent = __decorate([
+EventListComponent = __decorate([
     core_1.Component({
-        selector: "<event-detail>",
-        templateUrl: "eventDetail.component.html"
+        selector: "store-event-list",
+        templateUrl: "eventList.component.html"
     }),
-    __metadata("design:paramtypes", [repository_1.Repository, router_1.Router, router_1.ActivatedRoute])
-], EventDetailComponent);
-exports.EventDetailComponent = EventDetailComponent;
-//# sourceMappingURL=eventDetail.component.js.map
+    __metadata("design:paramtypes", [repository_1.Repository])
+], EventListComponent);
+exports.EventListComponent = EventListComponent;
+//# sourceMappingURL=eventList.component.js.map

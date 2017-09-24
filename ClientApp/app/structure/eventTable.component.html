@@ -6,6 +6,6 @@
         <td>{{event.price}}</td>
         <td>{{event.dateBegin | date: "dd.MM.yyyy"}}</td> 
         <td><button class="btn btn-primary btn-sm" 
-                    (click)="selectEvent(event.eventId)" >Детали</button></td>
+                    [routerLink]="['/detail', event.eventId]" >Детали</button></td>
     </tr>
 </table>

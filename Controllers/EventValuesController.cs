@@ -56,7 +56,7 @@ namespace EventStore.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Event> GetEvents(string category, string search, int? year, bool related = false)
+        public IActionResult GetEvents(string category, string search, int? year, bool related = false, bool metadata = false)
         {
             IQueryable<Event> query = context.Events;
 
@@ -95,12 +95,17 @@ namespace EventStore.Controllers
                     }
                 });
 
-                return data;
+                return metadata ? CreateMetadata(data) : Ok(data);
             }
             else
             {
-                return query;
+                return metadata ? CreateMetadata(query) : Ok(query);
             }
+        }
+
+        private IActionResult CreateMetadata(IEnumerable<Event> events)
+        {
+            return Ok(new { data = events, categories = context.Events.Select(e => e.Category).Distinct().OrderBy(c => c) });
         }
 
         [HttpPost]

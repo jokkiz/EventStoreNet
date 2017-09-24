@@ -20,9 +20,8 @@ var Repository = (function () {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.churchies = [];
-        // this.filter.category = "Open Air";
+        this.categories = [];
         this.filter.related = true;
-        // this.filter.year = 2017;
         this.getEvents(true);
     }
     Repository.prototype.getEvent = function (id) {
@@ -50,8 +49,12 @@ var Repository = (function () {
         if (this.filter.year) {
             urls += "&year=" + this.filter.year;
         }
+        urls += "&metadata=true";
         this.sendRequest(http_1.RequestMethod.Get, urls)
-            .subscribe(function (response) { return _this.events = response; });
+            .subscribe(function (response) {
+            _this.events = response.data;
+            _this.categories = response.categories;
+        });
     };
     Repository.prototype.getChurchies = function () {
         var _this = this;

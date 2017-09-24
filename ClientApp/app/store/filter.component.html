@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="m-1">
+    <button class="btn btn-outline-primary btn-block" (click)="setCurrentCategory(null)">Все категории</button>
+    <button *ngFor="let category of categories" class="btn btn-outline-primary btn-block"
+            [class.active]="currentCategory== category"
+            (click)="setCurrentCategory(category)">
+        {{category}}
+    </button>
+</div>

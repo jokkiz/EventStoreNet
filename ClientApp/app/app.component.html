@@ -1,18 +1,1 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="col">
-            <filter-events></filter-events>
-            <event-table></event-table>
-        </div>
-        <div class="col">
-           <event-detail></event-detail>
-        </div>
-    </div>
-</div>
-<button class="btn btn-primary m-a-1 " (click)="createEvent()">Создать мероприятие</button>
-<button class="btn btn-primary m-a-1" (click)="createEventAndChurch()">Создать мероприятие и церковь</button>
-<button class="btn btn-secondary m-a-1" (click)="replaceEvent()">Изменить мероприятие</button>
-<button class="btn btn-secondary m-a-1" (click)="replaceChurch()">Изменить церковь</button>
-<button class="btn btn-success m-a-1" (click)="updateEvent()">Изменить мероприятие</button>
-<button class="btn btn-danger m-a-1" (click)="deleteEvent()">Удалить мероприятие</button>
-<button class="btn btn-danger m-a-1" (click)="deleteChurch()">Удалить церковь</button>
+﻿<router-outlet></router-outlet>
