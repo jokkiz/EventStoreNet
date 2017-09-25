@@ -10,6 +10,9 @@ export class EventListComponent {
     constructor(private repo: Repository) { }
 
     get events(): Event[] {
-        return this.repo.events;
+        if (this.repo.events != null && this.repo.events.length > 0) {
+            let pageIndex = (this.repo.pagination.currentPage - 1) * this.repo.pagination.eventPerPage;
+            return this.repo.events.slice(pageIndex, pageIndex + this.repo.pagination.eventPerPage);
+        }
     }
 }

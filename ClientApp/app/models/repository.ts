@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Http, RequestMethod, Request, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
-import { Filter } from "./configClasses.repository";
+import { Filter, Pagination } from "./configClasses.repository";
 import { Church } from "./church.model";
 
 const eventsUrl = "/api/events";
@@ -12,6 +12,7 @@ const churchUrl = "/api/churchies";
 @Injectable()
 export class Repository {
     private filterObject = new Filter();
+    private paginationObject = new Pagination();
 
     constructor(private http: Http) {
         this.filter.related = true;
@@ -52,7 +53,12 @@ export class Repository {
             .subscribe(response => {
                 this.events = response.data;
                 this.categories = response.categories;
+                this.pagination.currentPage = 1;
             });
+    }
+
+    get pagination(): Pagination {
+        return this.paginationObject;
     }
 
     getChurchies() {

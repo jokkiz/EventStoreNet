@@ -11,4 +11,12 @@ var Filter = (function () {
     return Filter;
 }());
 exports.Filter = Filter;
+var Pagination = (function () {
+    function Pagination() {
+        this.eventPerPage = 4;
+        this.currentPage = 1;
+    }
+    return Pagination;
+}());
+exports.Pagination = Pagination;
 //# sourceMappingURL=configClasses.repository.js.map

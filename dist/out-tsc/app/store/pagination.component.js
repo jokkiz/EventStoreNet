@@ -15,6 +15,29 @@ var PaginationComponent = (function () {
     function PaginationComponent(repo) {
         this.repo = repo;
     }
+    Object.defineProperty(PaginationComponent.prototype, "current", {
+        get: function () {
+            return this.repo.pagination.currentPage;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PaginationComponent.prototype, "pages", {
+        get: function () {
+            if (this.repo.events != null) {
+                return Array(Math.ceil(this.repo.events.length / this.repo.pagination.eventPerPage))
+                    .fill(0).map(function (x, i) { return i + 1; });
+            }
+            else {
+                return [];
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PaginationComponent.prototype.changePage = function (newPage) {
+        this.repo.pagination.currentPage = newPage;
+    };
     return PaginationComponent;
 }());
 PaginationComponent = __decorate([

@@ -19,6 +19,7 @@ var Repository = (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
+        this.paginationObject = new configClasses_repository_1.Pagination();
         this.churchies = [];
         this.categories = [];
         this.filter.related = true;
@@ -54,8 +55,16 @@ var Repository = (function () {
             .subscribe(function (response) {
             _this.events = response.data;
             _this.categories = response.categories;
+            _this.pagination.currentPage = 1;
         });
     };
+    Object.defineProperty(Repository.prototype, "pagination", {
+        get: function () {
+            return this.paginationObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Repository.prototype.getChurchies = function () {
         var _this = this;
         this.sendRequest(http_1.RequestMethod.Get, churchUrl).subscribe(function (response) { return _this.churchies = response; });

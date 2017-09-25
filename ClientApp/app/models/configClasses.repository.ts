@@ -9,3 +9,8 @@
         this.related = false;
     }
 }
+
+export class Pagination {
+    eventPerPage: number = 4;
+    currentPage = 1;
+}

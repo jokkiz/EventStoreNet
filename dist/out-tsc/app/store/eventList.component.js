@@ -17,7 +17,10 @@ var EventListComponent = (function () {
     }
     Object.defineProperty(EventListComponent.prototype, "events", {
         get: function () {
-            return this.repo.events;
+            if (this.repo.events != null && this.repo.events.length > 0) {
+                var pageIndex = (this.repo.pagination.currentPage - 1) * this.repo.pagination.eventPerPage;
+                return this.repo.events.slice(pageIndex, pageIndex + this.repo.pagination.eventPerPage);
+            }
         },
         enumerable: true,
         configurable: true
