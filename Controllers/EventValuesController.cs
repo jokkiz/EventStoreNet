@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EventStore.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using EventStore.Models.BindingTargets;
 using Microsoft.AspNetCore.JsonPatch;
 
