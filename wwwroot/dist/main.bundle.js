@@ -988,7 +988,7 @@ var EventSelectionComponent = (function () {
 }());
 EventSelectionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
-        selector: "store-event",
+        selector: 'store-event',
         template: __webpack_require__(119)
     })
 ], EventSelectionComponent);

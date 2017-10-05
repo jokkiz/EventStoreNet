@@ -1,9 +1,7 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: "store-event",
-    templateUrl: "eventSelection.component.html"
+    selector: 'store-event',
+    templateUrl: 'eventSelection.component.html'
 })
-export class EventSelectionComponent {
-
-}
+export class EventSelectionComponent { }

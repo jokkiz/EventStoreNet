@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Repository } from '../models/repository';
 import { Event } from '../models/event.model';
-import { Cart} from '../models/cart.model'
+import { Cart } from '../models/cart.model';
 
 @Component({
     selector: 'app-store-event-list',
