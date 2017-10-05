@@ -4,21 +4,38 @@ import {Event} from '../models/event.model';
 @Injectable()
 export class Cart {
     selections: EventSelection[] = [];
+    itemCount: number = 0;
     totalPrice: number = 0;
 
     addEvent(event: Event) {
         const selection = this.selections.find(ps => ps.eventId == event.eventId);
         if (selection) {
-            selection.isBuy = true;
+            selection.quantity++;
         } else {
             this.selections.push(new EventSelection(this,
-                event.eventId, event.name, event.price, true
+                event.eventId, event.name, event.price, 1
             ));
             this.updateCart();
         }
     }
 
+    updateQuantity(eventId: number, quantity: number) {
+        if (quantity > 0) {
+            let selection = this.selections.find(es => es.eventId == eventId);
+            if (selection) {
+                selection.quantity = quantity;
+            } else {
+                let index = this.selections.findIndex(es => es.eventId == eventId);
+                if (index != -1) {
+                    this.selections.splice(index, 1);
+                }
+                this.updateCart();
+            }
+        }
+    }
+
     updateCart() {
+        this.itemCount = this.selections.map(es => es.quantity).reduce((prev, curr) => prev + curr, 0);
         this.totalPrice = this.selections.map(ps => ps.price).reduce((prev, curr) => prev + curr, 0);
     }
 
@@ -33,17 +50,15 @@ export class EventSelection {
         public eventId?: number,
         public name?: string,
         public price?: number,
-        private isBuyValue?: boolean
-    ) {
-        this.isBuyValue = false;
+        private quantityValue?: number
+    ) { }
+
+    get quantity() {
+        return this.quantityValue;
     }
 
-    get isBuy() {
-        return this.isBuyValue;
-    }
-
-    set isBuy (newBuy: boolean) {
-        this.isBuyValue = newBuy;
+    set quantity(newQuantity: number) {
+        this.quantityValue = newQuantity;
         this.cart.updateCart();
     }
 }

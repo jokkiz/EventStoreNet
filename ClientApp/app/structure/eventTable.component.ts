@@ -1,11 +1,11 @@
 ﻿import { Component } from '@angular/core';
-import { Repository } from "../models/repository";
-import { Event } from "../models/event.model";
-import { Router } from "@angular/router";
+import { Repository } from '../models/repository';
+import { Event } from '../models/event.model';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: "event-table",
-    templateUrl: "eventTable.component.html"
+    selector: 'app-event-table',
+    templateUrl: 'eventTable.component.html'
 })
 export class EventTableComponent{
     constructor(private repo: Repository,
@@ -18,6 +18,6 @@ export class EventTableComponent{
 
     selectEvent(id: number) {
         this.repo.getEvent(id);
-        this.router.navigateByUrl("/detail");
+        this.router.navigateByUrl('/detail');
     }
 }

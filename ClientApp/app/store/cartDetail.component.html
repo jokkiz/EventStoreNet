@@ -1,0 +1,47 @@
+<div class="navbar-bg-inverse">
+    <a class="navbar-brand text-white">Event Store</a>
+</div>
+<div class="m-1">
+    <h2 class="text-center">Ваша корзина</h2>
+    <table class="table table-bordered table-striped p-1">
+        <thead>
+            <tr>
+                <th>Кол-во</th>
+                <th>Мероприятие</th>
+                <th class="text-right">Цена</th>
+                <th class="text-right">Подитог</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="cart.selections.length == 0">
+                <td colspan="4" class="text-xs-center">
+                    Ваша корзина пуста
+                </td>
+            </tr>
+            <tr *ngFor="let sel of cart.selections">
+                <td></td>
+                <td>{{sel.name}}</td>
+                <td class="text-right">{{sel.price | currency:"USD":true}}</td>
+                <td class="text-right">{{sel.quantity * sel.price | currency:"USD":true}}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-danger" (click)="cart.updateQuantity(sel.eventId, 0)">Удалить</button>
+                </td>
+                <!-- TODO: сделать удаление из представления -->
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-rigth">Итого:</td>
+                <td class="text-right">{{cart.totalPrice | currency:"USD":true}}</td>
+                <!-- TODO: неверный подитог -->
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="text-center">
+    <button class="btn btn-primary" routerLink="/store">К списку мероприятий</button>
+    <button class="btn btn-secondary" routerLink="/checkout" 
+        [disabled]="cart.selections.length == 0">
+        Регистрация
+    </button>
+</div>
