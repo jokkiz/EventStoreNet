@@ -10,33 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
 var router_1 = require("@angular/router");
-var EventTableComponent = (function () {
-    function EventTableComponent(repo, router) {
-        this.repo = repo;
-        this.router = router;
+var order_models_1 = require("../../models/order.models");
+var CheckoutDetailsComponent = (function () {
+    function CheckoutDetailsComponent(route, order) {
+        this.route = route;
+        this.order = order;
+        if (order.events.length != 0) {
+            this.route.navigateByUrl('cart/');
+        }
     }
-    Object.defineProperty(EventTableComponent.prototype, "events", {
-        get: function () {
-            return this.repo.events;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    EventTableComponent.prototype.selectEvent = function (id) {
-        this.repo.getEvent(id);
-        this.router.navigateByUrl('/detail');
-    };
-    return EventTableComponent;
+    return CheckoutDetailsComponent;
 }());
-EventTableComponent = __decorate([
+CheckoutDetailsComponent = __decorate([
     core_1.Component({
-        selector: 'app-event-table',
-        templateUrl: 'eventTable.component.html'
+        templateUrl: 'checkoutDetails.component.html'
     }),
-    __metadata("design:paramtypes", [repository_1.Repository,
-        router_1.Router])
-], EventTableComponent);
-exports.EventTableComponent = EventTableComponent;
-//# sourceMappingURL=eventTable.component.js.map
+    __metadata("design:paramtypes", [router_1.Router, order_models_1.Order])
+], CheckoutDetailsComponent);
+exports.CheckoutDetailsComponent = CheckoutDetailsComponent;
+//# sourceMappingURL=checkoutDetails.component.js.map

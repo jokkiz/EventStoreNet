@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 100:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -9,7 +9,7 @@ webpackJsonp([2],{
 var content = __webpack_require__(36);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(215)(content, {});
+var update = __webpack_require__(216)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(true) {
@@ -27,7 +27,7 @@ if(true) {
 
 /***/ }),
 
-/***/ 215:
+/***/ 216:
 /***/ (function(module, exports) {
 
 /*
@@ -280,11 +280,11 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 222:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(17);
-module.exports = __webpack_require__(100);
+__webpack_require__(18);
+module.exports = __webpack_require__(101);
 
 
 /***/ }),
@@ -297,7 +297,7 @@ exports = module.exports = __webpack_require__(55)(false);
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n", ""]);
 
 // exports
 
@@ -2220,7 +2220,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
 /***/ }),
 
@@ -2410,5 +2410,5 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ })
 
-},[222]);
+},[223]);
 //# sourceMappingURL=styles.bundle.js.map

@@ -1,0 +1,30 @@
+<div class="navbar bg-inverse">
+    <a class="navbar-brand text-white">EVENT STORE</a>
+</div>
+
+<h2 class="text-center mt-1">Шаг 2: Оплата</h2>
+
+<form novalidate #paymentForm="ngForm">
+    <div class="form-group">
+        <label>Номер карты</label>
+        <input #cardNumber="ngModel" name="cardNumber" class="form-control" 
+            [(ngModel)]="order.payment.cardNumber" required/>
+        <div *ngIf="cardNumber.invalid" class="text-danger">Пожалуйста введите корректный номер карты</div>
+    </div>
+    <div class="form-group">
+        <label>Карта действительна</label>
+        <input #cardExpiry="ngModel" name="cardExpiry" class="form-control" 
+             [(ngModel)]="order.payment.cardExpiry" required/>
+        <div *ngIf="cardExpiry.invalid" class="text-danger">Пожалуйста введите корректное время действия карты</div>
+    </div>
+    <div class="form-group">
+        <label>Защитный код</label>
+        <input #cardCode="ngModel" name="cardCode" class="form-control" 
+                [(ngModel)]="order.payment.cardSecurityCode" required/>
+        <div *ngIf="cardCode.invalid" class="text-danger">Пожалуйста введите защитный код</div>
+    </div>
+    <div class="text-center pt-2">
+        <button class="btn btn-outline-primary" routerLink="/checkout/step1">Назад</button>
+        <button class="btn btn-danger" [disabled]="paymentForm.invalid" routerLInk="/checkout/step3">Далее</button>
+    </div>
+</form>

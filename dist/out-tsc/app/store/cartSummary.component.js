@@ -10,33 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
-var router_1 = require("@angular/router");
-var EventTableComponent = (function () {
-    function EventTableComponent(repo, router) {
-        this.repo = repo;
-        this.router = router;
+var cart_model_1 = require("../models/cart.model");
+var CartSummaryComponent = (function () {
+    function CartSummaryComponent(cart) {
+        this.cart = cart;
     }
-    Object.defineProperty(EventTableComponent.prototype, "events", {
+    Object.defineProperty(CartSummaryComponent.prototype, "itemCount", {
         get: function () {
-            return this.repo.events;
+            return this.cart.itemCount;
         },
         enumerable: true,
         configurable: true
     });
-    EventTableComponent.prototype.selectEvent = function (id) {
-        this.repo.getEvent(id);
-        this.router.navigateByUrl('/detail');
-    };
-    return EventTableComponent;
+    Object.defineProperty(CartSummaryComponent.prototype, "totalPrice", {
+        get: function () {
+            return this.cart.totalPrice;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return CartSummaryComponent;
 }());
-EventTableComponent = __decorate([
+CartSummaryComponent = __decorate([
     core_1.Component({
-        selector: 'app-event-table',
-        templateUrl: 'eventTable.component.html'
+        selector: 'app-store-cartsummary',
+        templateUrl: 'cartSummary.component.html'
     }),
-    __metadata("design:paramtypes", [repository_1.Repository,
-        router_1.Router])
-], EventTableComponent);
-exports.EventTableComponent = EventTableComponent;
-//# sourceMappingURL=eventTable.component.js.map
+    __metadata("design:paramtypes", [cart_model_1.Cart])
+], CartSummaryComponent);
+exports.CartSummaryComponent = CartSummaryComponent;
+//# sourceMappingURL=cartSummary.component.js.map

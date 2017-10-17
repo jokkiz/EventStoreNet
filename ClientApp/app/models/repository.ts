@@ -5,9 +5,11 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter, Pagination } from "./configClasses.repository";
 import { Church } from "./church.model";
+import {Order} from './order.models';
 
-const eventsUrl = "/api/events";
+const eventsUrl = '/api/events';
 const churchUrl = "/api/churchies";
+const orderUrl = "/api/orders";
 
 @Injectable()
 export class Repository {
@@ -28,26 +30,26 @@ export class Repository {
         return this.http.request(new Request({
             method: verb, url: url, body: data
         })).map(response => {
-            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+            return response.headers.get("Content-Length") != '0' ? response.json() : null;
         });
     } 
 
     getEvents(related = false) {
-        let urls = eventsUrl + "?related=" + this.filter.related;
+        let urls = eventsUrl + '?related=' + this.filter.related;
 
         if (this.filter.category) {
-            urls += "&category=" + this.filter.category; 
+            urls += '&category=' + this.filter.category; 
         }
 
         if (this.filter.search) {
-            urls += "&search=" + this.filter.search;
+            urls += '&search=' + this.filter.search;
         }
 
         if (this.filter.year) {
-            urls += "&year=" + this.filter.year;
+            urls += '&year=' + this.filter.year;
         }
 
-        urls += "&metadata=true";
+        urls += '&metadata=true';
 
         this.sendRequest(RequestMethod.Get, urls)
             .subscribe(response => {
@@ -87,8 +89,8 @@ export class Repository {
             this.churchies.push(chrch);
             if (evnt != null) {
                 this.createEvent(evnt);
-            }            
-        })
+            }
+        });
     }
     get filter(): Filter {
         return this.filterObject;
@@ -101,7 +103,7 @@ export class Repository {
             datebegin: evnt.datebegin, dateend: evnt.dateend,
             church: evnt.church ? evnt.church.churchId : 0
         };
-        this.sendRequest(RequestMethod.Post, eventsUrl + "/" + evnt.eventId, data)
+        this.sendRequest(RequestMethod.Post, eventsUrl + '/' + evnt.eventId, data)
             .subscribe(response => this.getEvents());
     }
 
@@ -109,31 +111,62 @@ export class Repository {
         let data = {
             name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
         };
-        this.sendRequest(RequestMethod.Put, churchUrl + "/" + chrch.churchId, data)
+        this.sendRequest(RequestMethod.Put, churchUrl + '/' + chrch.churchId, data)
             .subscribe(response => this.getEvents());
     }
 
     updateEvent(id: number, changes: Map<string, any>) {
         let patch = [];
-        changes.forEach((value, key) => patch.push({ op: "replace", path: key, value: value }));
-        this.sendRequest(RequestMethod.Patch, eventsUrl + "/" + id, patch)
+        changes.forEach((value, key) => patch.push({ op: 'replace', path: key, value: value }));
+        this.sendRequest(RequestMethod.Patch, eventsUrl + '/' + id, patch)
             .subscribe(response => this.getEvents());
     }
 
     deleteEvent(id: number) {
-        this.sendRequest(RequestMethod.Delete, eventsUrl + "/" + id).subscribe(response => this.getEvents());
+        this.sendRequest(RequestMethod.Delete, eventsUrl + '/' + id).subscribe(response => this.getEvents());
     }
 
     deleteChurch(id: number) {
-        this.sendRequest(RequestMethod.Delete, churchUrl + "/" + id)
+        this.sendRequest(RequestMethod.Delete, churchUrl + '/' + id)
             .subscribe(response => {
                 this.getEvents();
                 this.getChurchies();
         });
+    }
+    storeSessionData(dataType: string, data: any) {
+        return this.sendRequest(RequestMethod.Post, '/api/session/' + dataType, data)
+            .subscribe(response => {});
+    }
+
+    getSessionData(dataType: string): Observable<any> {
+        return this.sendRequest(RequestMethod.Get, 'api/session/'+ dataType);
+    }
+
+    getOrders() {
+        this.sendRequest(RequestMethod.Get, orderUrl).subscribe(data => this.orders = data);
+    }
+
+    createOrder(order: Order) {
+        this.sendRequest(RequestMethod.Post, orderUrl, {
+            name: order.name,
+            address: order.address,
+            payment: order.payment,
+            events: order.events
+        }).subscribe(data => {
+            order.orderConfirmation = data;
+            order.cart.clear();
+            order.clear();
+        });
+    }
+
+    shipOrder(order: Order) {
+        this.sendRequest(RequestMethod.Post, orderUrl + '/' + order.orderId)
+            .subscribe(r => this.getOrders());
     }
 
     event: Event;
     events: Event[];
     churchies: Church[] = [];
     categories: string[] = [];
+    orders: Order[] = [];
 }

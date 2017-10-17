@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Event} from '../models/event.model';
+import {Repository} from './repository';
 
 @Injectable()
 export class Cart {
@@ -7,6 +8,27 @@ export class Cart {
     itemCount: number = 0;
     totalPrice: number = 0;
 
+    constructor(private repo: Repository) {
+        repo.getSessionData('cart').subscribe(cartData => {
+            if (cartData != null) {
+                cartData.map(item => new EventSelection(this, item.eventId, 
+                    item.name, item.price, item.quantity)).forEach(item => this.selections.push(item));
+                this.update();
+            }
+        });
+    }
+
+    update(storeData: boolean = true) {
+        this.itemCount = this.selections.map(es => es.quantity)
+            .reduce((prev, curr) => prev + curr, 0);
+        this.totalPrice = this.selections.map(es => es.quantity * es.price)
+            .reduce((prev, curr) => prev + curr, 0);
+        if (storeData) {
+            this.repo.storeSessionData('cart', this.selections.map(s => {
+                return {eventID: s.eventId, name: s.name, price: s.price, quantity: s.quantity };
+            }));
+        }
+    }
     addEvent(event: Event) {
         const selection = this.selections.find(ps => ps.eventId == event.eventId);
         if (selection) {

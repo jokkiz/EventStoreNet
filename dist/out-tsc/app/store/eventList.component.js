@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
+var cart_model_1 = require("../models/cart.model");
 var EventListComponent = (function () {
-    function EventListComponent(repo) {
+    function EventListComponent(repo, cart) {
         this.repo = repo;
+        this.cart = cart;
     }
     Object.defineProperty(EventListComponent.prototype, "events", {
         get: function () {
@@ -25,14 +27,17 @@ var EventListComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    EventListComponent.prototype.addToCart = function (event) {
+        this.cart.addEvent(event);
+    };
     return EventListComponent;
 }());
 EventListComponent = __decorate([
     core_1.Component({
-        selector: "store-event-list",
-        templateUrl: "eventList.component.html"
+        selector: 'app-store-event-list',
+        templateUrl: 'eventList.component.html'
     }),
-    __metadata("design:paramtypes", [repository_1.Repository])
+    __metadata("design:paramtypes", [repository_1.Repository, cart_model_1.Cart])
 ], EventListComponent);
 exports.EventListComponent = EventListComponent;
 //# sourceMappingURL=eventList.component.js.map

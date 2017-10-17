@@ -37,6 +37,19 @@ namespace EventStore
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+
+            
+            services.AddDistributedSqlServerCache(options => {
+                options.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+                options.SchemaName = "dbo";
+                options.TableName = "SessionData";
+            });
+            
+            services.AddSession(options => {
+                options.CookieName = "EventStore.Session";
+                options.IdleTimeout = System.TimeSpan.FromHours(48);
+                options.CookieHttpOnly = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +74,7 @@ namespace EventStore
             //}
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

@@ -13,8 +13,9 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
-var eventsUrl = "/api/events";
+var eventsUrl = '/api/events';
 var churchUrl = "/api/churchies";
+var orderUrl = "/api/orders";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
@@ -22,6 +23,7 @@ var Repository = (function () {
         this.paginationObject = new configClasses_repository_1.Pagination();
         this.churchies = [];
         this.categories = [];
+        this.orders = [];
         this.filter.related = true;
         this.getEvents(true);
     }
@@ -34,23 +36,23 @@ var Repository = (function () {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
         })).map(function (response) {
-            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+            return response.headers.get("Content-Length") != '0' ? response.json() : null;
         });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
         if (related === void 0) { related = false; }
-        var urls = eventsUrl + "?related=" + this.filter.related;
+        var urls = eventsUrl + '?related=' + this.filter.related;
         if (this.filter.category) {
-            urls += "&category=" + this.filter.category;
+            urls += '&category=' + this.filter.category;
         }
         if (this.filter.search) {
-            urls += "&search=" + this.filter.search;
+            urls += '&search=' + this.filter.search;
         }
         if (this.filter.year) {
-            urls += "&year=" + this.filter.year;
+            urls += '&year=' + this.filter.year;
         }
-        urls += "&metadata=true";
+        urls += '&metadata=true';
         this.sendRequest(http_1.RequestMethod.Get, urls)
             .subscribe(function (response) {
             _this.events = response.data;
@@ -110,7 +112,7 @@ var Repository = (function () {
             datebegin: evnt.datebegin, dateend: evnt.dateend,
             church: evnt.church ? evnt.church.churchId : 0
         };
-        this.sendRequest(http_1.RequestMethod.Post, eventsUrl + "/" + evnt.eventId, data)
+        this.sendRequest(http_1.RequestMethod.Post, eventsUrl + '/' + evnt.eventId, data)
             .subscribe(function (response) { return _this.getEvents(); });
     };
     Repository.prototype.replaceChurch = function (chrch) {
@@ -118,27 +120,55 @@ var Repository = (function () {
         var data = {
             name: chrch.name, city: chrch.city, street: chrch.street, geodata: chrch.geodata
         };
-        this.sendRequest(http_1.RequestMethod.Put, churchUrl + "/" + chrch.churchId, data)
+        this.sendRequest(http_1.RequestMethod.Put, churchUrl + '/' + chrch.churchId, data)
             .subscribe(function (response) { return _this.getEvents(); });
     };
     Repository.prototype.updateEvent = function (id, changes) {
         var _this = this;
         var patch = [];
-        changes.forEach(function (value, key) { return patch.push({ op: "replace", path: key, value: value }); });
-        this.sendRequest(http_1.RequestMethod.Patch, eventsUrl + "/" + id, patch)
+        changes.forEach(function (value, key) { return patch.push({ op: 'replace', path: key, value: value }); });
+        this.sendRequest(http_1.RequestMethod.Patch, eventsUrl + '/' + id, patch)
             .subscribe(function (response) { return _this.getEvents(); });
     };
     Repository.prototype.deleteEvent = function (id) {
         var _this = this;
-        this.sendRequest(http_1.RequestMethod.Delete, eventsUrl + "/" + id).subscribe(function (response) { return _this.getEvents(); });
+        this.sendRequest(http_1.RequestMethod.Delete, eventsUrl + '/' + id).subscribe(function (response) { return _this.getEvents(); });
     };
     Repository.prototype.deleteChurch = function (id) {
         var _this = this;
-        this.sendRequest(http_1.RequestMethod.Delete, churchUrl + "/" + id)
+        this.sendRequest(http_1.RequestMethod.Delete, churchUrl + '/' + id)
             .subscribe(function (response) {
             _this.getEvents();
             _this.getChurchies();
         });
+    };
+    Repository.prototype.storeSessionData = function (dataType, data) {
+        return this.sendRequest(http_1.RequestMethod.Post, '/api/session/' + dataType, data)
+            .subscribe(function (response) { });
+    };
+    Repository.prototype.getSessionData = function (dataType) {
+        return this.sendRequest(http_1.RequestMethod.Get, 'api/session/' + dataType);
+    };
+    Repository.prototype.getOrders = function () {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Get, orderUrl).subscribe(function (data) { return _this.orders = data; });
+    };
+    Repository.prototype.createOrder = function (order) {
+        this.sendRequest(http_1.RequestMethod.Post, orderUrl, {
+            name: order.name,
+            address: order.address,
+            payment: order.payment,
+            events: order.events
+        }).subscribe(function (data) {
+            order.orderConfirmation = data;
+            order.cart.clear();
+            order.clear();
+        });
+    };
+    Repository.prototype.shipOrder = function (order) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Post, orderUrl + '/' + order.orderId)
+            .subscribe(function (r) { return _this.getOrders(); });
     };
     return Repository;
 }());

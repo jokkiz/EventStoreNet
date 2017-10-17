@@ -14,6 +14,7 @@ namespace EventStore.Models
         public DbSet<Event> Events { get; set; }
         public DbSet<Church> Churchies { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Order> Orders {get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
