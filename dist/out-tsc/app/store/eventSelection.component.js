@@ -14,7 +14,7 @@ var EventSelectionComponent = (function () {
 }());
 EventSelectionComponent = __decorate([
     core_1.Component({
-        selector: 'store-event',
+        selector: 'app-store-event',
         templateUrl: 'eventSelection.component.html'
     })
 ], EventSelectionComponent);

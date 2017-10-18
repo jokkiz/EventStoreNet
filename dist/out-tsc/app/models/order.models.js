@@ -12,13 +12,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("./repository");
 var cart_model_1 = require("./cart.model");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/filter");
 var Order = (function () {
-    function Order(repo, cart) {
+    function Order(repo, cart, router) {
+        var _this = this;
         this.repo = repo;
         this.cart = cart;
         this.payment = new Payment();
         this.submitted = false;
         this.shipped = false;
+        router.events
+            .filter(function (event) { return event instanceof router_1.NavigationStart; })
+            .subscribe(function (event) {
+            if (router.url.startsWith('/checkout') && _this.name != null && _this.address != null) {
+                repo.storeSessionData('checkout', {
+                    nane: _this.name, address: _this.address, cardNumber: _this.payment.cardNumber,
+                    cardExpiry: _this.payment.cardExpiry, cardSecurityCode: _this.payment.cardSecurityCode
+                });
+            }
+        });
+        repo.getSessionData('checkout').subscribe(function (data) {
+            if (data != null) {
+                _this.name = data.name;
+                _this.address = data.address;
+                _this.payment.cardNumber = data.cardNumber;
+                _this.payment.cardExpiry = data.cardExpiry;
+                _this.payment.cardSecurityCode = data.cardSecurityCode;
+            }
+        });
     }
     Object.defineProperty(Order.prototype, "events", {
         get: function () {
@@ -43,7 +65,7 @@ var Order = (function () {
 }());
 Order = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [repository_1.Repository, cart_model_1.Cart])
+    __metadata("design:paramtypes", [repository_1.Repository, cart_model_1.Cart, router_1.Router])
 ], Order);
 exports.Order = Order;
 var OrderConfirmation = (function () {

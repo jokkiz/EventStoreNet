@@ -9,10 +9,16 @@ import { EventSelectionComponent } from './eventSelection.component';
 import {CartDetailComponent} from './cartDetail.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {CheckoutDetailsComponent} from './checkout/checkoutDetails.component';
+import {CheckoutPaymentComponent} from './checkout/checkoutPayment.component';
+import {CheckoutSummaryComponent} from './checkout/checkoutSummary.component';
+import {OrderConfirmationComponent} from './checkout/orderConfirmation.component';
+
 
 @NgModule({
     declarations: [CartSummaryComponent, FilterComponent, PaginationComponent, RatingComponent,
-        EventListComponent, EventSelectionComponent, CartDetailComponent],
+        EventListComponent, EventSelectionComponent, CartDetailComponent, CheckoutDetailsComponent,
+        CheckoutPaymentComponent, CheckoutSummaryComponent, OrderConfirmationComponent],
     imports: [BrowserModule, RouterModule, FormsModule],
     exports: [EventSelectionComponent]
 })

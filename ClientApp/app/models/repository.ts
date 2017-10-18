@@ -1,15 +1,15 @@
-﻿import { Event } from "./event.model";
-import { Injectable } from "@angular/core";
-import { Http, RequestMethod, Request, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/map";
-import { Filter, Pagination } from "./configClasses.repository";
-import { Church } from "./church.model";
+﻿import { Event } from './event.model';
+import { Injectable } from '@angular/core';
+import { Http, RequestMethod, Request, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import { Filter, Pagination } from './configClasses.repository';
+import { Church } from './church.model';
 import {Order} from './order.models';
 
 const eventsUrl = '/api/events';
-const churchUrl = "/api/churchies";
-const orderUrl = "/api/orders";
+const churchUrl = '/api/churchies';
+const orderUrl = '/api/orders';
 
 @Injectable()
 export class Repository {
@@ -22,23 +22,17 @@ export class Repository {
     }
 
     getEvent(id: number) {
-        this.sendRequest(RequestMethod.Get, eventsUrl + "/" + id)
+        this.sendRequest(RequestMethod.Get, eventsUrl + '/' + id)
             .subscribe(response => { this.event = response; });
     }
 
-    private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any> {
-        return this.http.request(new Request({
-            method: verb, url: url, body: data
-        })).map(response => {
-            return response.headers.get("Content-Length") != '0' ? response.json() : null;
-        });
-    } 
+    
 
     getEvents(related = false) {
         let urls = eventsUrl + '?related=' + this.filter.related;
 
         if (this.filter.category) {
-            urls += '&category=' + this.filter.category; 
+            urls += '&category=' + this.filter.category;
         }
 
         if (this.filter.search) {
@@ -72,7 +66,8 @@ export class Repository {
             name: evnt.name, category: evnt.category, description: evnt.description, price: evnt.price,
             datebegin: evnt.datebegin, dateend: evnt.dateend,
             church: evnt.church ? evnt.church.churchId : 0
-        }
+        };
+
         this.sendRequest(RequestMethod.Post, eventsUrl, data).subscribe(response => {
             evnt.eventId = response;
             this.events.push(evnt);
@@ -139,7 +134,7 @@ export class Repository {
     }
 
     getSessionData(dataType: string): Observable<any> {
-        return this.sendRequest(RequestMethod.Get, 'api/session/'+ dataType);
+        return this.sendRequest(RequestMethod.Get, 'api/session/' + dataType);
     }
 
     getOrders() {
@@ -162,6 +157,14 @@ export class Repository {
     shipOrder(order: Order) {
         this.sendRequest(RequestMethod.Post, orderUrl + '/' + order.orderId)
             .subscribe(r => this.getOrders());
+    }
+
+    private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any> {
+        return this.http.request(new Request({
+            method: verb, url: url, body: data
+        })).map(response => {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
     }
 
     event: Event;

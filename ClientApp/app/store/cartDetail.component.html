@@ -21,8 +21,8 @@
             <tr *ngFor="let sel of cart.selections">
                 <td></td>
                 <td>{{sel.name}}</td>
-                <td class="text-right">{{sel.price | currency:"USD":true}}</td>
-                <td class="text-right">{{sel.quantity * sel.price | currency:"USD":true}}</td>
+                <td class="text-right">{{sel.price | currency:"RUB":true}}</td>
+                <td class="text-right">{{sel.quantity * sel.price | currency:"RUB":true}}</td>
                 <td class="text-center">
                     <button class="btn btn-sm btn-danger" (click)="cart.updateQuantity(sel.eventId, 0)">Удалить</button>
                 </td>
@@ -32,7 +32,7 @@
         <tfoot>
             <tr>
                 <td colspan="3" class="text-rigth">Итого:</td>
-                <td class="text-right">{{cart.totalPrice | currency:"USD":true}}</td>
+                <td class="text-right">{{cart.totalPrice | currency:"RUB":true}}</td>
                 <!-- TODO: неверный подитог -->
             </tr>
         </tfoot>
@@ -41,7 +41,5 @@
 <div class="text-center">
     <button class="btn btn-primary" routerLink="/store">К списку мероприятий</button>
     <button class="btn btn-secondary" routerLink="/checkout" 
-        [disabled]="cart.selections.length == 0">
-        Регистрация
-    </button>
+        [disabled]="cart.selections.length == 0">Сформировать заказ</button>
 </div>

@@ -14,8 +14,8 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
 var eventsUrl = '/api/events';
-var churchUrl = "/api/churchies";
-var orderUrl = "/api/orders";
+var churchUrl = '/api/churchies';
+var orderUrl = '/api/orders';
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
@@ -29,15 +29,8 @@ var Repository = (function () {
     }
     Repository.prototype.getEvent = function (id) {
         var _this = this;
-        this.sendRequest(http_1.RequestMethod.Get, eventsUrl + "/" + id)
+        this.sendRequest(http_1.RequestMethod.Get, eventsUrl + '/' + id)
             .subscribe(function (response) { _this.event = response; });
-    };
-    Repository.prototype.sendRequest = function (verb, url, data) {
-        return this.http.request(new http_1.Request({
-            method: verb, url: url, body: data
-        })).map(function (response) {
-            return response.headers.get("Content-Length") != '0' ? response.json() : null;
-        });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
@@ -169,6 +162,13 @@ var Repository = (function () {
         var _this = this;
         this.sendRequest(http_1.RequestMethod.Post, orderUrl + '/' + order.orderId)
             .subscribe(function (r) { return _this.getOrders(); });
+    };
+    Repository.prototype.sendRequest = function (verb, url, data) {
+        return this.http.request(new http_1.Request({
+            method: verb, url: url, body: data
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
     };
     return Repository;
 }());

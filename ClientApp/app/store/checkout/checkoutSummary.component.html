@@ -8,7 +8,7 @@
         <tr><th>Итоговая цена</th><td>{{order.cart.totalPrice | currency:"RUB":true}}</td></tr>
     </table>
     <div class="text-center pt-2">
-        <button class="btn btn-outline-primary" routeLink="/checkout/step2">Назад</button>
+        <button class="btn btn-outline-primary" routerLink="/checkout/step2">Назад</button>
         <button class="btn btn-danger" (click)="submitOrder()">Подтвердить</button>
     </div>
 </div>

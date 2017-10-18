@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using EventStore.Models;
+using EventStore.Models.BindingTargets;
 
 namespace EventStore.Controllers
 {
@@ -21,6 +22,15 @@ namespace EventStore.Controllers
         public void SetCart([FromBody] EventSelection[] events) {
             var jsonData = JsonConvert.SerializeObject(events);
             HttpContext.Session.SetString("cart", jsonData);
+        }
+
+        [HttpGet("checkout")]
+        public IActionResult GetCheckout() {
+            return Ok(HttpContext.Session.GetString("checkout"));
+        }
+        [HttpPost("checkout")]
+        public void StoreCheckout([FromBody] CheckoutState data) {
+            HttpContext.Session.SetString("checkout", JsonConvert.SerializeObject(data));
         }
     }
 }

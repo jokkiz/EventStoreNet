@@ -1,14 +1,45 @@
 webpackJsonp([1],{
 
-/***/ 102:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(109);
+
+
+var bootApplication = function () {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_app_module__["a" /* AppModule */]);
+};
+if (true) {
+    module["hot"].accept();
+    module["hot"].dispose(function () {
+        var oldRootElem = document.querySelector("app-root");
+        var newRootElem = document.createElement("app-root");
+        oldRootElem.parentNode.insertBefore(newRootElem, oldRootElem);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().destroy();
+    });
+}
+if (document.readyState === "complete") {
+    bootApplication();
+}
+else {
+    document.addEventListener("DOMContentLoaded", bootApplication);
+}
+//# sourceMappingURL=boot.js.map
+
+/***/ }),
+
+/***/ 108:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_event_model__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_church_model__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_event_model__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_church_model__ = __webpack_require__(111);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -75,8 +106,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(116),
-        styles: [__webpack_require__(115)]
+        template: __webpack_require__(121),
+        styles: [__webpack_require__(120)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -86,19 +117,19 @@ var _a;
 
 /***/ }),
 
-/***/ 103:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_store_module__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_store_module__ = __webpack_require__(119);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -134,20 +165,31 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 104:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_eventSelection_component__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_cartDetail_component__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_checkout_checkoutDetails_component__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_checkout_checkoutPayment_component__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_checkout_checkoutSummary_component__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_checkout_orderConfirmation_component__ = __webpack_require__(75);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutingConfig; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_eventSelection_component__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_cartDetail_component__ = __webpack_require__(69);
 
-// import { EventTableComponent } from "./structure/eventTable.component";
-// import { EventDetailComponent } from "./structure/eventDetail.component";
+
+
+
+
 
 
 var routes = [
+    { path: 'checkout/step1', component: __WEBPACK_IMPORTED_MODULE_3__store_checkout_checkoutDetails_component__["a" /* CheckoutDetailsComponent */] },
+    { path: 'checkout/step2', component: __WEBPACK_IMPORTED_MODULE_4__store_checkout_checkoutPayment_component__["a" /* CheckoutPaymentComponent */] },
+    { path: 'checkout/step3', component: __WEBPACK_IMPORTED_MODULE_5__store_checkout_checkoutSummary_component__["a" /* CheckoutSummaryComponent */] },
+    { path: 'checkout/confirmation', component: __WEBPACK_IMPORTED_MODULE_6__store_checkout_orderConfirmation_component__["a" /* OrderConfirmationComponent */] },
+    { path: 'checkout', component: __WEBPACK_IMPORTED_MODULE_3__store_checkout_checkoutDetails_component__["a" /* CheckoutDetailsComponent */] },
     { path: 'cart', component: __WEBPACK_IMPORTED_MODULE_2__store_cartDetail_component__["a" /* CartDetailComponent */] },
     { path: 'store', component: __WEBPACK_IMPORTED_MODULE_1__store_eventSelection_component__["a" /* EventSelectionComponent */] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__store_eventSelection_component__["a" /* EventSelectionComponent */] }
@@ -157,7 +199,7 @@ var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterM
 
 /***/ }),
 
-/***/ 105:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -177,7 +219,7 @@ var Church = (function () {
 
 /***/ }),
 
-/***/ 106:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -206,15 +248,15 @@ var Pagination = (function () {
 
 /***/ }),
 
-/***/ 107:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart_model__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_models__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart_model__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_models__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -240,98 +282,13 @@ ModelModule = __decorate([
 
 /***/ }),
 
-/***/ 108:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Order; });
-/* unused harmony export OrderConfirmation */
-/* unused harmony export Payment */
-/* unused harmony export CartLine */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart_model__ = __webpack_require__(19);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var Order = (function () {
-    function Order(repo, cart) {
-        this.repo = repo;
-        this.cart = cart;
-        this.payment = new Payment();
-        this.submitted = false;
-        this.shipped = false;
-    }
-    Object.defineProperty(Order.prototype, "events", {
-        get: function () {
-            return this.cart.selections
-                .map(function (e) { return new CartLine(e.eventId, e.quantity); });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Order.prototype.clear = function () {
-        this.name = null;
-        this.address = null;
-        this.payment = new Payment();
-        this.cart.clear();
-        this.submitted = false;
-    };
-    Order.prototype.submit = function () {
-        this.submitted = true;
-        this.repo.createOrder(this);
-    };
-    return Order;
-}());
-Order = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__cart_model__["a" /* Cart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cart_model__["a" /* Cart */]) === "function" && _b || Object])
-], Order);
-
-var OrderConfirmation = (function () {
-    function OrderConfirmation(orderId, authCode, amount) {
-        this.orderId = orderId;
-        this.authCode = authCode;
-        this.amount = amount;
-    }
-    return OrderConfirmation;
-}());
-
-var Payment = (function () {
-    function Payment() {
-    }
-    return Payment;
-}());
-
-var CartLine = (function () {
-    function CartLine(eventid, quantity) {
-        this.eventid = eventid;
-        this.quantity = quantity;
-    }
-    return CartLine;
-}());
-
-var _a, _b;
-//# sourceMappingURL=order.models.js.map
-
-/***/ }),
-
-/***/ 109:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_cart_model__ = __webpack_require__(20);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartSummaryComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_cart_model__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -366,7 +323,7 @@ var CartSummaryComponent = (function () {
 CartSummaryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: 'app-store-cartsummary',
-        template: __webpack_require__(118)
+        template: __webpack_require__(123)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_cart_model__["a" /* Cart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_cart_model__["a" /* Cart */]) === "function" && _a || Object])
 ], CartSummaryComponent);
@@ -376,14 +333,14 @@ var _a;
 
 /***/ }),
 
-/***/ 110:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_cart_model__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_cart_model__ = __webpack_require__(20);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -419,7 +376,7 @@ var EventListComponent = (function () {
 EventListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: 'app-store-event-list',
-        template: __webpack_require__(119)
+        template: __webpack_require__(128)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__models_cart_model__["a" /* Cart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__models_cart_model__["a" /* Cart */]) === "function" && _b || Object])
 ], EventListComponent);
@@ -429,13 +386,13 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 111:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(13);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -474,7 +431,7 @@ var FilterComponent = (function () {
 FilterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: "store-filter",
-        template: __webpack_require__(121)
+        template: __webpack_require__(130)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], FilterComponent);
@@ -484,13 +441,13 @@ var _a;
 
 /***/ }),
 
-/***/ 112:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(13);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -534,7 +491,7 @@ var PaginationComponent = (function () {
 PaginationComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: "store-pagination",
-        template: __webpack_require__(122)
+        template: __webpack_require__(131)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], PaginationComponent);
@@ -544,13 +501,13 @@ var _a;
 
 /***/ }),
 
-/***/ 113:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatingComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_event_model__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_event_model__ = __webpack_require__(70);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -591,7 +548,7 @@ __decorate([
 RatingComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: "store-ratings",
-        template: __webpack_require__(123)
+        template: __webpack_require__(132)
     })
 ], RatingComponent);
 
@@ -600,28 +557,36 @@ var _a;
 
 /***/ }),
 
-/***/ 114:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cartSummary_component__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__filter_component__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pagination_component__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__eventList_component__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ratings_component__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__eventSelection_component__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__cartDetail_component__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_router__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_forms__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cartSummary_component__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__filter_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pagination_component__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__eventList_component__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ratings_component__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__eventSelection_component__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__cartDetail_component__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_forms__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__checkout_checkoutDetails_component__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__checkout_checkoutPayment_component__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkout_checkoutSummary_component__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__checkout_orderConfirmation_component__ = __webpack_require__(75);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -641,7 +606,8 @@ var StoreModule = (function () {
 StoreModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [__WEBPACK_IMPORTED_MODULE_2__cartSummary_component__["a" /* CartSummaryComponent */], __WEBPACK_IMPORTED_MODULE_3__filter_component__["a" /* FilterComponent */], __WEBPACK_IMPORTED_MODULE_4__pagination_component__["a" /* PaginationComponent */], __WEBPACK_IMPORTED_MODULE_6__ratings_component__["a" /* RatingComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__eventList_component__["a" /* EventListComponent */], __WEBPACK_IMPORTED_MODULE_7__eventSelection_component__["a" /* EventSelectionComponent */], __WEBPACK_IMPORTED_MODULE_8__cartDetail_component__["a" /* CartDetailComponent */]],
+            __WEBPACK_IMPORTED_MODULE_5__eventList_component__["a" /* EventListComponent */], __WEBPACK_IMPORTED_MODULE_7__eventSelection_component__["a" /* EventSelectionComponent */], __WEBPACK_IMPORTED_MODULE_8__cartDetail_component__["a" /* CartDetailComponent */], __WEBPACK_IMPORTED_MODULE_11__checkout_checkoutDetails_component__["a" /* CheckoutDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__checkout_checkoutPayment_component__["a" /* CheckoutPaymentComponent */], __WEBPACK_IMPORTED_MODULE_13__checkout_checkoutSummary_component__["a" /* CheckoutSummaryComponent */], __WEBPACK_IMPORTED_MODULE_14__checkout_orderConfirmation_component__["a" /* OrderConfirmationComponent */]],
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_9__angular_router__["a" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_10__angular_forms__["a" /* FormsModule */]],
         exports: [__WEBPACK_IMPORTED_MODULE_7__eventSelection_component__["a" /* EventSelectionComponent */]]
     })
@@ -651,10 +617,10 @@ StoreModule = __decorate([
 
 /***/ }),
 
-/***/ 115:
+/***/ 120:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(55)(false);
+exports = module.exports = __webpack_require__(57)(false);
 // imports
 
 
@@ -669,59 +635,66 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 116:
+/***/ 121:
 /***/ (function(module, exports) {
 
 module.exports = "<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ 117:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"navbar-bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">Event Store</a>\r\n</div>\r\n<div class=\"m-1\">\r\n    <h2 class=\"text-center\">Ваша корзина</h2>\r\n    <table class=\"table table-bordered table-striped p-1\">\r\n        <thead>\r\n            <tr>\r\n                <th>Кол-во</th>\r\n                <th>Мероприятие</th>\r\n                <th class=\"text-right\">Цена</th>\r\n                <th class=\"text-right\">Подитог</th>                \r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr *ngIf=\"cart.selections.length == 0\">\r\n                <td colspan=\"4\" class=\"text-xs-center\">\r\n                    Ваша корзина пуста\r\n                </td>\r\n            </tr>\r\n            <tr *ngFor=\"let sel of cart.selections\">\r\n                <td></td>\r\n                <td>{{sel.name}}</td>\r\n                <td class=\"text-right\">{{sel.price | currency:\"USD\":true}}</td>\r\n                <td class=\"text-right\">{{sel.quantity * sel.price | currency:\"USD\":true}}</td>\r\n                <td class=\"text-center\">\r\n                    <button class=\"btn btn-sm btn-danger\" (click)=\"cart.updateQuantity(sel.eventId, 0)\">Удалить</button>\r\n                </td>\r\n                <!-- TODO: сделать удаление из представления -->\r\n            </tr>\r\n        </tbody>\r\n        <tfoot>\r\n            <tr>\r\n                <td colspan=\"3\" class=\"text-rigth\">Итого:</td>\r\n                <td class=\"text-right\">{{cart.totalPrice | currency:\"USD\":true}}</td>\r\n                <!-- TODO: неверный подитог -->\r\n            </tr>\r\n        </tfoot>\r\n    </table>\r\n</div>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/store\">К списку мероприятий</button>\r\n    <button class=\"btn btn-secondary\" routerLink=\"/checkout\" \r\n        [disabled]=\"cart.selections.length == 0\">\r\n        Регистрация\r\n    </button>\r\n</div>"
-
-/***/ }),
-
-/***/ 118:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"text-right p-1\">\r\n    <small *ngIf=\"itemCount > 0; else empty\">\r\n        ({{itemCount}} эл-ов {{totalPrice | currency:\"RUB\":true}})\r\n    </small>\r\n    <button class=\"btn btn-sm ml-1\"\r\n        [disabled]=\"itemCount == 0\"\r\n        routerLink=\"/cart\">\r\n        <i class=\"fa fa-shopping-basket\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ng-template #empty>\r\n    <small>(пуста)\r\n    </small>\r\n</ng-template>"
-
-/***/ }),
-
-/***/ 119:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"events?.length > 0; else nodata\">\r\n    <div *ngFor=\"let event of events\" class=\"card card-outline-primary m-1\">\r\n        <div class=\"card-header\">\r\n            <span class=\"h4\">\r\n                {{event.name}}\r\n                <store-ratings [event]=\"event\"></store-ratings>\r\n            </span>\r\n            <span class=\"float-right badge badge-pill badge-primary\">{{event.price | currency: \"RUB\":true}}</span> \r\n        </div>\r\n        <div class=\"card-block\">\r\n            <span class=\"card-text p-a-1\">{{event.description}}</span>\r\n            <button class=\"float-right btn btn-sm btn-success\" (click)=\"addToCart(event)\">Я хочу пойти!</button>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<ng-template #nodata>\r\n    <h4 class=\"m-1\">Загрузка данных. Пожалуйста подождите...</h4>\r\n</ng-template>"
-
-/***/ }),
-
-/***/ 120:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"navbar bg-inverse\">\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            <a class=\"navbar-brand text-white\">Event Store</a> \r\n        </div>\r\n        <div class=\"col text-white mr-1\">\r\n            <app-store-cartsummary></app-store-cartsummary>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row no-gutters\">\r\n    <div class=\"col-3\">\r\n        <store-filter></store-filter>\r\n    </div>\r\n    <div class=\"col\">\r\n        <app-store-event-list></app-store-event-list>\r\n        <store-pagination></store-pagination>\r\n    </div>\r\n</div>"
-
-/***/ }),
-
-/***/ 121:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"m-1\">\r\n    <button class=\"btn btn-outline-primary btn-block\" (click)=\"setCurrentCategory(null)\">Все категории</button>\r\n    <button *ngFor=\"let category of categories\" class=\"btn btn-outline-primary btn-block\"\r\n            [class.active]=\"currentCategory== category\"\r\n            (click)=\"setCurrentCategory(category)\">\r\n        {{category}}\r\n    </button>\r\n</div>"
-
-/***/ }),
-
 /***/ 122:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"pages.length > 1\" class=\"text-right my-2\">\r\n    <button *ngFor=\"let page of pages\"\r\n            class=\"btn btn-outline-primary mx-1\"\r\n            [class.active]=\"current == page\"\r\n            (click) =\"changePage(page)\">\r\n        {{page}}\r\n    </button>\r\n</div>"
+module.exports = "<div class=\"navbar-bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">Event Store</a>\r\n</div>\r\n<div class=\"m-1\">\r\n    <h2 class=\"text-center\">Ваша корзина</h2>\r\n    <table class=\"table table-bordered table-striped p-1\">\r\n        <thead>\r\n            <tr>\r\n                <th>Кол-во</th>\r\n                <th>Мероприятие</th>\r\n                <th class=\"text-right\">Цена</th>\r\n                <th class=\"text-right\">Подитог</th>                \r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr *ngIf=\"cart.selections.length == 0\">\r\n                <td colspan=\"4\" class=\"text-xs-center\">\r\n                    Ваша корзина пуста\r\n                </td>\r\n            </tr>\r\n            <tr *ngFor=\"let sel of cart.selections\">\r\n                <td></td>\r\n                <td>{{sel.name}}</td>\r\n                <td class=\"text-right\">{{sel.price | currency:\"RUB\":true}}</td>\r\n                <td class=\"text-right\">{{sel.quantity * sel.price | currency:\"RUB\":true}}</td>\r\n                <td class=\"text-center\">\r\n                    <button class=\"btn btn-sm btn-danger\" (click)=\"cart.updateQuantity(sel.eventId, 0)\">Удалить</button>\r\n                </td>\r\n                <!-- TODO: сделать удаление из представления -->\r\n            </tr>\r\n        </tbody>\r\n        <tfoot>\r\n            <tr>\r\n                <td colspan=\"3\" class=\"text-rigth\">Итого:</td>\r\n                <td class=\"text-right\">{{cart.totalPrice | currency:\"RUB\":true}}</td>\r\n                <!-- TODO: неверный подитог -->\r\n            </tr>\r\n        </tfoot>\r\n    </table>\r\n</div>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/store\">К списку мероприятий</button>\r\n    <button class=\"btn btn-secondary\" routerLink=\"/checkout\" \r\n        [disabled]=\"cart.selections.length == 0\">Сформировать заказ</button>\r\n</div>"
 
 /***/ }),
 
 /***/ 123:
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"h6 ml-1\">\r\n    <i *ngFor=\"let s of stars\" \r\n       [class]=\"s ? 'fa fa-star': 'fa fa-star-o'\"\r\n       [style.color]=\"s ? 'goldenrod' : 'gray'\"\r\n       ></i>\r\n</span>"
+module.exports = "<div class=\"text-right p-1\">\r\n    <small *ngIf=\"itemCount > 0; else empty\">\r\n        ({{itemCount}} эл-ов {{totalPrice | currency:\"RUB\":true}})\r\n    </small>\r\n    <button class=\"btn btn-sm ml-1\"\r\n        [disabled]=\"itemCount == 0\"\r\n        routerLink=\"/cart\">\r\n        <i class=\"fa fa-shopping-basket\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ng-template #empty>\r\n    <small>(пуста)\r\n    </small>\r\n</ng-template>"
+
+/***/ }),
+
+/***/ 124:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"navbar bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">EVENT STORE</a>\r\n</div>\r\n\r\n<h2 class=\"text-center mt-1\">Шаг 1: Ваши детали</h2>\r\n\r\n<form novalidate #detailsForm=\"ngForm\">\r\n    <div class=\"form-group\">\r\n        <label>Наименование</label>\r\n        <input #name=\"ngModel\" name=\"name\" class=\"form-control\" [(ngModel)]=\"order.name\" required/>\r\n        <div *ngIf=\"name.invalid\" class=\"text-danger\">Пожалуйста введите Ваше имя</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Адрес</label>\r\n        <input #address=\"ngModel\" name=\"street\" class=\"form-control\" [(ngModel)]=\"order.address\" required/>\r\n        <div *ngIf=\"address.invalid\" class=\"text-danger\">Пожалуйста введите Ваш адрес</div>\r\n    </div>\r\n    <div class=\"text-center pt-2\">\r\n        <button class=\"btn btn-outline-primary\" routerLink=\"/cart\">Назад</button>\r\n        <button class=\"btn btn-danger\" [disabled]=\"detailsForm.invalid\" routerLink=\"/checkout/step2\">Далее</button>\r\n    </div>\r\n</form>"
+
+/***/ }),
+
+/***/ 125:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"navbar bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">EVENT STORE</a>\r\n</div>\r\n\r\n<h2 class=\"text-center mt-1\">Шаг 2: Оплата</h2>\r\n\r\n<form novalidate #paymentForm=\"ngForm\">\r\n    <div class=\"form-group\">\r\n        <label>Номер карты</label>\r\n        <input #cardNumber=\"ngModel\" name=\"cardNumber\" class=\"form-control\" \r\n            [(ngModel)]=\"order.payment.cardNumber\" required/>\r\n        <div *ngIf=\"cardNumber.invalid\" class=\"text-danger\">Пожалуйста введите корректный номер карты</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Карта действительна</label>\r\n        <input #cardExpiry=\"ngModel\" name=\"cardExpiry\" class=\"form-control\" \r\n             [(ngModel)]=\"order.payment.cardExpiry\" required/>\r\n        <div *ngIf=\"cardExpiry.invalid\" class=\"text-danger\">Пожалуйста введите корректное время действия карты</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Защитный код</label>\r\n        <input #cardCode=\"ngModel\" name=\"cardCode\" class=\"form-control\" \r\n                [(ngModel)]=\"order.payment.cardSecurityCode\" required/>\r\n        <div *ngIf=\"cardCode.invalid\" class=\"text-danger\">Пожалуйста введите защитный код</div>\r\n    </div>\r\n    <div class=\"text-center pt-2\">\r\n        <button class=\"btn btn-outline-primary\" routerLink=\"/checkout/step1\">Назад</button>\r\n        <button class=\"btn btn-danger\" [disabled]=\"paymentForm.invalid\" routerLink=\"/checkout/step3\">Далее</button>\r\n    </div>\r\n</form>"
+
+/***/ }),
+
+/***/ 126:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"text-center\">Итого</h2>\r\n\r\n<div class=\"container\">\r\n    <table class=\"table m-2\">\r\n        <tr><th>Наименование</th><td>{{order.name}}</td></tr>\r\n        <tr><th>Адрес</th><td>{{order.address}}</td></tr>\r\n        <tr><th>События</th><td>{{order.cart.itemCount}}</td></tr>\r\n        <tr><th>Итоговая цена</th><td>{{order.cart.totalPrice | currency:\"RUB\":true}}</td></tr>\r\n    </table>\r\n    <div class=\"text-center pt-2\">\r\n        <button class=\"btn btn-outline-primary\" routerLink=\"/checkout/step2\">Назад</button>\r\n        <button class=\"btn btn-danger\" (click)=\"submitOrder()\">Подтвердить</button>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ 127:
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"text-center\">Подтверждение заказа</h2>\r\n<div class=\"container\">\r\n    <table class=\"table m-2\" *ngIf=\"order.orderConfirmation; else nodata\">\r\n        <tr><th>Заявка</th><td>{{order.orderConfirmation.orderId}}</td></tr>\r\n        <tr><th>Цена</th><td>{{order.orderConfirmation.amount}}</td></tr>\r\n        <tr><th>Код оплаты</th><td>{{order.orderConfirmation.authCode}}</td></tr>\r\n    </table>\r\n</div>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/\">Завершить</button>\r\n</div>\r\n\r\n<ng-template #nodata>\r\n    <h3 class=\"text-center\">Подтверждение заявки...</h3>\r\n</ng-template>"
+
+/***/ }),
+
+/***/ 128:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"events?.length > 0; else nodata\">\r\n    <div *ngFor=\"let event of events\" class=\"card card-outline-primary m-1\">\r\n        <div class=\"card-header\">\r\n            <span class=\"h4\">\r\n                {{event.name}}\r\n                <store-ratings [event]=\"event\"></store-ratings>\r\n            </span>\r\n            <span class=\"float-right badge badge-pill badge-primary\">{{event.price | currency:\"RUB\":true}}</span> \r\n        </div>\r\n        <div class=\"card-block\">\r\n            <span class=\"card-text p-a-1\">{{event.description}}</span>\r\n            <button class=\"float-right btn btn-sm btn-success\" (click)=\"addToCart(event)\">Я хочу пойти!</button>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<ng-template #nodata>\r\n    <h4 class=\"m-1\">Загрузка данных. Пожалуйста подождите...</h4>\r\n</ng-template>"
+
+/***/ }),
+
+/***/ 129:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"navbar bg-inverse\">\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            <a class=\"navbar-brand text-white\">Event Store</a> \r\n        </div>\r\n        <div class=\"col text-white mr-1\">\r\n            <app-store-cartsummary></app-store-cartsummary>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row no-gutters\">\r\n    <div class=\"col-3\">\r\n        <store-filter></store-filter>\r\n    </div>\r\n    <div class=\"col\">\r\n        <app-store-event-list></app-store-event-list>\r\n        <store-pagination></store-pagination>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -729,12 +702,12 @@ module.exports = "<span class=\"h6 ml-1\">\r\n    <i *ngFor=\"let s of stars\" \
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(112);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -749,8 +722,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var eventsUrl = '/api/events';
-var churchUrl = "/api/churchies";
-var orderUrl = "/api/orders";
+var churchUrl = '/api/churchies';
+var orderUrl = '/api/orders';
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
@@ -764,15 +737,8 @@ var Repository = (function () {
     }
     Repository.prototype.getEvent = function (id) {
         var _this = this;
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, eventsUrl + "/" + id)
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, eventsUrl + '/' + id)
             .subscribe(function (response) { _this.event = response; });
-    };
-    Repository.prototype.sendRequest = function (verb, url, data) {
-        return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
-            method: verb, url: url, body: data
-        })).map(function (response) {
-            return response.headers.get("Content-Length") != '0' ? response.json() : null;
-        });
     };
     Repository.prototype.getEvents = function (related) {
         var _this = this;
@@ -905,6 +871,13 @@ var Repository = (function () {
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Post, orderUrl + '/' + order.orderId)
             .subscribe(function (r) { return _this.getOrders(); });
     };
+    Repository.prototype.sendRequest = function (verb, url, data) {
+        return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
+            method: verb, url: url, body: data
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
+    };
     return Repository;
 }());
 Repository = __decorate([
@@ -917,14 +890,35 @@ var _a;
 
 /***/ }),
 
-/***/ 19:
+/***/ 130:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"m-1\">\r\n    <button class=\"btn btn-outline-primary btn-block\" (click)=\"setCurrentCategory(null)\">Все категории</button>\r\n    <button *ngFor=\"let category of categories\" class=\"btn btn-outline-primary btn-block\"\r\n            [class.active]=\"currentCategory== category\"\r\n            (click)=\"setCurrentCategory(category)\">\r\n        {{category}}\r\n    </button>\r\n</div>"
+
+/***/ }),
+
+/***/ 131:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"pages.length > 1\" class=\"text-right my-2\">\r\n    <button *ngFor=\"let page of pages\"\r\n            class=\"btn btn-outline-primary mx-1\"\r\n            [class.active]=\"current == page\"\r\n            (click) =\"changePage(page)\">\r\n        {{page}}\r\n    </button>\r\n</div>"
+
+/***/ }),
+
+/***/ 132:
+/***/ (function(module, exports) {
+
+module.exports = "<span class=\"h6 ml-1\">\r\n    <i *ngFor=\"let s of stars\" \r\n       [class]=\"s ? 'fa fa-star': 'fa fa-star-o'\"\r\n       [style.color]=\"s ? 'goldenrod' : 'gray'\"\r\n       ></i>\r\n</span>"
+
+/***/ }),
+
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Cart; });
-/* unused harmony export EventSelection */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(13);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Cart; });
+/* unused harmony export EventSelection */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1029,29 +1023,139 @@ var _a;
 
 /***/ }),
 
-/***/ 221:
+/***/ 21:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart_model__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Order; });
+/* unused harmony export OrderConfirmation */
+/* unused harmony export Payment */
+/* unused harmony export CartLine */
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Order = (function () {
+    function Order(repo, cart, router) {
+        var _this = this;
+        this.repo = repo;
+        this.cart = cart;
+        this.payment = new Payment();
+        this.submitted = false;
+        this.shipped = false;
+        router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* NavigationStart */]; })
+            .subscribe(function (event) {
+            if (router.url.startsWith('/checkout') && _this.name != null && _this.address != null) {
+                repo.storeSessionData('checkout', {
+                    nane: _this.name, address: _this.address, cardNumber: _this.payment.cardNumber,
+                    cardExpiry: _this.payment.cardExpiry, cardSecurityCode: _this.payment.cardSecurityCode
+                });
+            }
+        });
+        repo.getSessionData('checkout').subscribe(function (data) {
+            if (data != null) {
+                _this.name = data.name;
+                _this.address = data.address;
+                _this.payment.cardNumber = data.cardNumber;
+                _this.payment.cardExpiry = data.cardExpiry;
+                _this.payment.cardSecurityCode = data.cardSecurityCode;
+            }
+        });
+    }
+    Object.defineProperty(Order.prototype, "events", {
+        get: function () {
+            return this.cart.selections
+                .map(function (e) { return new CartLine(e.eventId, e.quantity); });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Order.prototype.clear = function () {
+        this.name = null;
+        this.address = null;
+        this.payment = new Payment();
+        this.cart.clear();
+        this.submitted = false;
+    };
+    Order.prototype.submit = function () {
+        this.submitted = true;
+        this.repo.createOrder(this);
+    };
+    return Order;
+}());
+Order = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__cart_model__["a" /* Cart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__cart_model__["a" /* Cart */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object])
+], Order);
+
+var OrderConfirmation = (function () {
+    function OrderConfirmation(orderId, authCode, amount) {
+        this.orderId = orderId;
+        this.authCode = authCode;
+        this.amount = amount;
+    }
+    return OrderConfirmation;
+}());
+
+var Payment = (function () {
+    function Payment() {
+    }
+    return Payment;
+}());
+
+var CartLine = (function () {
+    function CartLine(eventid, quantity) {
+        this.eventid = eventid;
+        this.quantity = quantity;
+    }
+    return CartLine;
+}());
+
+var _a, _b, _c;
+//# sourceMappingURL=order.models.js.map
+
+/***/ }),
+
+/***/ 230:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(18);
-module.exports = __webpack_require__(99);
+__webpack_require__(19);
+module.exports = __webpack_require__(105);
 
 
 /***/ }),
 
-/***/ 67:
+/***/ 69:
 /***/ (function(module, exports) {
 
-function webpackEmptyAsyncContext(req) {
-	return new Promise(function(resolve, reject) { reject(new Error("Cannot find module '" + req + "'.")); });
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
 }
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 67;
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 69;
 
 /***/ }),
 
-/***/ 68:
+/***/ 70:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1075,13 +1179,13 @@ var Event = (function () {
 
 /***/ }),
 
-/***/ 69:
+/***/ 71:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartDetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_cart_model__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_cart_model__ = __webpack_require__(20);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartDetailComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1102,7 +1206,7 @@ var CartDetailComponent = (function () {
 CartDetailComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
         selector: 'app-cart-detail',
-        template: __webpack_require__(117)
+        template: __webpack_require__(122)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_cart_model__["a" /* Cart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_cart_model__["a" /* Cart */]) === "function" && _a || Object])
 ], CartDetailComponent);
@@ -1112,12 +1216,186 @@ var _a;
 
 /***/ }),
 
-/***/ 70:
+/***/ 72:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventSelectionComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_order_models__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutDetailsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CheckoutDetailsComponent = (function () {
+    function CheckoutDetailsComponent(route, order) {
+        this.route = route;
+        this.order = order;
+        if (order.events.length != 0) {
+            this.route.navigateByUrl('cart/');
+        }
+    }
+    return CheckoutDetailsComponent;
+}());
+CheckoutDetailsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
+        template: __webpack_require__(124)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */]) === "function" && _b || Object])
+], CheckoutDetailsComponent);
+
+var _a, _b;
+//# sourceMappingURL=checkoutDetails.component.js.map
+
+/***/ }),
+
+/***/ 73:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_order_models__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutPaymentComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CheckoutPaymentComponent = (function () {
+    function CheckoutPaymentComponent(router, order) {
+        this.router = router;
+        this.order = order;
+        if (order.name == null || order.address == null) {
+            router.navigateByUrl('checkout/step1');
+        }
+    }
+    return CheckoutPaymentComponent;
+}());
+CheckoutPaymentComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
+        template: __webpack_require__(125)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */]) === "function" && _b || Object])
+], CheckoutPaymentComponent);
+
+var _a, _b;
+//# sourceMappingURL=checkoutPayment.component.js.map
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_order_models__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutSummaryComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CheckoutSummaryComponent = (function () {
+    function CheckoutSummaryComponent(router, order) {
+        this.router = router;
+        this.order = order;
+        if (order.payment.cardNumber == null
+            || order.payment.cardExpiry == null
+            || order.payment.cardSecurityCode == null) {
+            router.navigateByUrl('/checkout/step2');
+        }
+    }
+    CheckoutSummaryComponent.prototype.submitOrder = function () {
+        this.order.submit();
+        this.router.navigateByUrl('checkout/confirmation');
+    };
+    return CheckoutSummaryComponent;
+}());
+CheckoutSummaryComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
+        template: __webpack_require__(126)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */]) === "function" && _b || Object])
+], CheckoutSummaryComponent);
+
+var _a, _b;
+//# sourceMappingURL=checkoutSummary.component.js.map
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_order_models__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderConfirmationComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var OrderConfirmationComponent = (function () {
+    function OrderConfirmationComponent(router, order) {
+        this.router = router;
+        this.order = order;
+        if (!order.submitted) {
+            router.navigateByUrl('/checkout/step3');
+        }
+    }
+    return OrderConfirmationComponent;
+}());
+OrderConfirmationComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
+        template: __webpack_require__(127)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__models_order_models__["a" /* Order */]) === "function" && _b || Object])
+], OrderConfirmationComponent);
+
+var _a, _b;
+//# sourceMappingURL=orderConfirmation.component.js.map
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventSelectionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1132,45 +1410,14 @@ var EventSelectionComponent = (function () {
 }());
 EventSelectionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */])({
-        selector: 'store-event',
-        template: __webpack_require__(120)
+        selector: 'app-store-event',
+        template: __webpack_require__(129)
     })
 ], EventSelectionComponent);
 
 //# sourceMappingURL=eventSelection.component.js.map
 
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(103);
-
-
-var bootApplication = function () {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_app_module__["a" /* AppModule */]);
-};
-if (true) {
-    module["hot"].accept();
-    module["hot"].dispose(function () {
-        var oldRootElem = document.querySelector("app-root");
-        var newRootElem = document.createElement("app-root");
-        oldRootElem.parentNode.insertBefore(newRootElem, oldRootElem);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().destroy();
-    });
-}
-if (document.readyState === "complete") {
-    bootApplication();
-}
-else {
-    document.addEventListener("DOMContentLoaded", bootApplication);
-}
-//# sourceMappingURL=boot.js.map
-
 /***/ })
 
-},[221]);
+},[230]);
 //# sourceMappingURL=main.bundle.js.map

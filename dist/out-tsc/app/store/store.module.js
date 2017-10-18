@@ -17,6 +17,10 @@ var eventSelection_component_1 = require("./eventSelection.component");
 var cartDetail_component_1 = require("./cartDetail.component");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
+var checkoutDetails_component_1 = require("./checkout/checkoutDetails.component");
+var checkoutPayment_component_1 = require("./checkout/checkoutPayment.component");
+var checkoutSummary_component_1 = require("./checkout/checkoutSummary.component");
+var orderConfirmation_component_1 = require("./checkout/orderConfirmation.component");
 var StoreModule = (function () {
     function StoreModule() {
     }
@@ -25,7 +29,8 @@ var StoreModule = (function () {
 StoreModule = __decorate([
     core_1.NgModule({
         declarations: [cartSummary_component_1.CartSummaryComponent, filter_component_1.FilterComponent, pagination_component_1.PaginationComponent, ratings_component_1.RatingComponent,
-            eventList_component_1.EventListComponent, eventSelection_component_1.EventSelectionComponent, cartDetail_component_1.CartDetailComponent],
+            eventList_component_1.EventListComponent, eventSelection_component_1.EventSelectionComponent, cartDetail_component_1.CartDetailComponent, checkoutDetails_component_1.CheckoutDetailsComponent,
+            checkoutPayment_component_1.CheckoutPaymentComponent, checkoutSummary_component_1.CheckoutSummaryComponent, orderConfirmation_component_1.OrderConfirmationComponent],
         imports: [platform_browser_1.BrowserModule, router_1.RouterModule, forms_1.FormsModule],
         exports: [eventSelection_component_1.EventSelectionComponent]
     })

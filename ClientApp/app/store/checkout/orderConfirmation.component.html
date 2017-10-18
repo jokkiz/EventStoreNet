@@ -1,0 +1,15 @@
+<h2 class="text-center">Подтверждение заказа</h2>
+<div class="container">
+    <table class="table m-2" *ngIf="order.orderConfirmation; else nodata">
+        <tr><th>Заявка</th><td>{{order.orderConfirmation.orderId}}</td></tr>
+        <tr><th>Цена</th><td>{{order.orderConfirmation.amount}}</td></tr>
+        <tr><th>Код оплаты</th><td>{{order.orderConfirmation.authCode}}</td></tr>
+    </table>
+</div>
+<div class="text-center">
+    <button class="btn btn-primary" routerLink="/">Завершить</button>
+</div>
+
+<ng-template #nodata>
+    <h3 class="text-center">Подтверждение заявки...</h3>
+</ng-template>

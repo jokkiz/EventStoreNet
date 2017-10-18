@@ -12,27 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var order_models_1 = require("../../models/order.models");
-var CheckoutSummaryComponent = (function () {
-    function CheckoutSummaryComponent(router, order) {
+var OrderConfirmationComponent = (function () {
+    function OrderConfirmationComponent(router, order) {
         this.router = router;
         this.order = order;
-        if (order.payment.cardNumber == null
-            || order.payment.cardExpiry == null
-            || order.payment.cardSecurityCode == null) {
-            router.navigateByUrl('/checkout/step2');
+        if (!order.submitted) {
+            router.navigateByUrl('/checkout/step3');
         }
     }
-    CheckoutSummaryComponent.prototype.submitOrder = function () {
-        this.order.submit();
-        this.router.navigateByUrl('checkout/confirmation');
-    };
-    return CheckoutSummaryComponent;
+    return OrderConfirmationComponent;
 }());
-CheckoutSummaryComponent = __decorate([
+OrderConfirmationComponent = __decorate([
     core_1.Component({
-        templateUrl: 'checkoutSummary.component.html'
+        templateUrl: 'orderConfirmation.component.html'
     }),
     __metadata("design:paramtypes", [router_1.Router, order_models_1.Order])
-], CheckoutSummaryComponent);
-exports.CheckoutSummaryComponent = CheckoutSummaryComponent;
-//# sourceMappingURL=checkoutSummary.component.js.map
+], OrderConfirmationComponent);
+exports.OrderConfirmationComponent = OrderConfirmationComponent;
+//# sourceMappingURL=orderConfirmation.component.js.map

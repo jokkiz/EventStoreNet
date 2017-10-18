@@ -31,7 +31,7 @@ namespace EventStore.Models {
         [Required]
         public string CardNumber {get;set;}
         [Required]
-        public string CardExpired {get;set;}
+        public string CardExpiry {get;set;}
         [Required]
         public int CardSecurityCode {get;set;}
         [BindNever]
