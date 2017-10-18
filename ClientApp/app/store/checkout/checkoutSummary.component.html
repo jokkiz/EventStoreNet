@@ -1,0 +1,14 @@
+<h2 class="text-center">Итого</h2>
+
+<div class="container">
+    <table class="table m-2">
+        <tr><th>Наименование</th><td>{{order.name}}</td></tr>
+        <tr><th>Адрес</th><td>{{order.address}}</td></tr>
+        <tr><th>События</th><td>{{order.cart.itemCount}}</td></tr>
+        <tr><th>Итоговая цена</th><td>{{order.cart.totalPrice | currency:"RUB":true}}</td></tr>
+    </table>
+    <div class="text-center pt-2">
+        <button class="btn btn-outline-primary" routeLink="/checkout/step2">Назад</button>
+        <button class="btn btn-danger" (click)="submitOrder()">Подтвердить</button>
+    </div>
+</div>
