@@ -128,6 +128,7 @@ export class Repository {
                 this.getChurchies();
         });
     }
+
     storeSessionData(dataType: string, data: any) {
         return this.sendRequest(RequestMethod.Post, '/api/session/' + dataType, data)
             .subscribe(response => {});

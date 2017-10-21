@@ -11,9 +11,9 @@ export class Cart {
     constructor(private repo: Repository) {
         repo.getSessionData('cart').subscribe(cartData => {
             if (cartData != null) {
-                cartData.map(item => new EventSelection(this, item.eventId, 
+                cartData.map(item => new EventSelection(this, item.eventId,
                     item.name, item.price, item.quantity)).forEach(item => this.selections.push(item));
-                this.update();
+                this.update(false);
             }
         });
     }

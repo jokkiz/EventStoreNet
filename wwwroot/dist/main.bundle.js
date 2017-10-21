@@ -659,7 +659,7 @@ module.exports = "<div class=\"text-right p-1\">\r\n    <small *ngIf=\"itemCount
 /***/ 124:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">EVENT STORE</a>\r\n</div>\r\n\r\n<h2 class=\"text-center mt-1\">Шаг 1: Ваши детали</h2>\r\n\r\n<form novalidate #detailsForm=\"ngForm\">\r\n    <div class=\"form-group\">\r\n        <label>Наименование</label>\r\n        <input #name=\"ngModel\" name=\"name\" class=\"form-control\" [(ngModel)]=\"order.name\" required/>\r\n        <div *ngIf=\"name.invalid\" class=\"text-danger\">Пожалуйста введите Ваше имя</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Адрес</label>\r\n        <input #address=\"ngModel\" name=\"street\" class=\"form-control\" [(ngModel)]=\"order.address\" required/>\r\n        <div *ngIf=\"address.invalid\" class=\"text-danger\">Пожалуйста введите Ваш адрес</div>\r\n    </div>\r\n    <div class=\"text-center pt-2\">\r\n        <button class=\"btn btn-outline-primary\" routerLink=\"/cart\">Назад</button>\r\n        <button class=\"btn btn-danger\" [disabled]=\"detailsForm.invalid\" routerLink=\"/checkout/step2\">Далее</button>\r\n    </div>\r\n</form>"
+module.exports = "<div class=\"navbar bg-inverse\">\r\n    <a class=\"navbar-brand text-white\">EVENT STORE</a>\r\n</div>\r\n<div class=\"container\">\r\n    <h2 class=\"text-center mt-1\">Шаг 1: Ваши детали</h2>\r\n\r\n    <form novalidate #detailsForm=\"ngForm\">\r\n        <div class=\"form-group\">\r\n            <label>Наименование</label>\r\n            <input #name=\"ngModel\" name=\"name\" class=\"form-control\" [(ngModel)]=\"order.name\" required/>\r\n            <div *ngIf=\"name.invalid\" class=\"text-danger\">Пожалуйста введите Ваше имя</div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label>Адрес</label>\r\n            <input #address=\"ngModel\" name=\"street\" class=\"form-control\" [(ngModel)]=\"order.address\" required/>\r\n            <div *ngIf=\"address.invalid\" class=\"text-danger\">Пожалуйста введите Ваш адрес</div>\r\n        </div>\r\n        <div class=\"text-center pt-2\">\r\n            <button class=\"btn btn-outline-primary\" routerLink=\"/cart\">Назад</button>\r\n            <button class=\"btn btn-danger\" [disabled]=\"detailsForm.invalid\" routerLink=\"/checkout/step2\">Далее</button>\r\n        </div>\r\n    </form>\r\n</div>"
 
 /***/ }),
 
@@ -940,7 +940,7 @@ var Cart = (function () {
         repo.getSessionData('cart').subscribe(function (cartData) {
             if (cartData != null) {
                 cartData.map(function (item) { return new EventSelection(_this, item.eventId, item.name, item.price, item.quantity); }).forEach(function (item) { return _this.selections.push(item); });
-                _this.update();
+                _this.update(false);
             }
         });
     }

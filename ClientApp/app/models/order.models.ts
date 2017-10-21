@@ -18,7 +18,7 @@ export class Order {
                 }
 
             });
-            
+
         repo.getSessionData('checkout').subscribe(data => {
             if (data != null) {
                 this.name = data.name;
